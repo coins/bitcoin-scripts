@@ -2,7 +2,7 @@
 
 ## Bit Commitment
 
-1. Choose secret number `N` 
+1. Choose secret number `N` from `{1,2}`
 2. Choose secret nonce `R` which is 31 bytes of randomness 
 3. The public commitment `C` is `R` hashed `N` times.
 
