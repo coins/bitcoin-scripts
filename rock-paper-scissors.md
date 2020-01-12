@@ -1,6 +1,6 @@
 # Rock Paper Scissors
 
-Both Alice and Bob make pre-image length commitments as described in betcoins.
+Both Alice and Bob make pre-image length commitments as described in [betcoins](betcoins.md).
 
 
 For compact code we use some group theory. 
