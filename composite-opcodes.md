@@ -1,8 +1,6 @@
 # Composite OP_CODES
 
-We can define custom op_codes by chaining existing op_codes.
-
-- [https://github.com/kristovatlas/interesting-bitcoin-data](Interesting data artifacts from the Bitcoin blockchain)
+We can define custom op_codes by chaining existing op_codes. 
 
 ## OP_MUL
 
@@ -157,4 +155,5 @@ bip-0016.mediawiki#520-byte-limitation-on-serialized-script-size)
 - max push is 520 bytes
 - There is positive zero `0x` and negative zero `0x80`. Both can have trailing zeros i.e `0x0080`. There are 1041 different encodings for False.
 
-## Reveal in Time or Burn
+## See Also 
+[https://github.com/kristovatlas/interesting-bitcoin-data](Interesting data artifacts from the Bitcoin blockchain)
