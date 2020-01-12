@@ -1,0 +1,329 @@
+<header>
+    Bitcoin Script Editor
+    <div class="grow"></div>
+    <a href="#new" class="button-new">New Script</a>
+</header>
+<div class="content">
+    <textarea class="input">
+
+    </textarea>
+    <div class="output">
+        <div class="output-header">
+            <div class="opcode-count"></div>
+            <div class="output-oneline" title="The script without line breaks. Click to copy">
+            </div>
+        </div>
+        <div class="output-hex"></div>
+        <div class="output-pretty"></div>
+    </div>
+</div>
+<style type="text/css">
+* {
+    box-sizing: border-box;
+}
+
+html{
+    background: rgb(40,41,35);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: 'system-ui';
+
+}
+
+header{
+    background: #009688;
+    color: #fff;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 56px;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+    z-index: 10;
+    width: 100%;
+    padding: 0 16px;
+    font-size: 20px;
+}
+
+.grow{
+    display: flex;
+    flex-grow: 1;
+}
+
+
+.content{
+    padding-top: 56px;
+    display: flex;
+    flex-direction: row;
+}
+
+.input,
+.output {
+    margin: 0;
+    padding: 16px;
+
+    color: #64FFDA;
+    font-size: 15px;
+    font-family: monospace;
+    width: 50%;
+    border: none;
+    min-height: 100vh;
+    background: transparent;
+    resize: none;
+}
+
+.input{
+    border-right: 1px solid rgba(255,255,255,0.2) 
+}
+
+.input:focus {
+    outline: none;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+}
+
+.output-pretty {
+    white-space: pre;
+    /*height: calc( 100vh - 80px );*/
+    padding-bottom: 32px;
+}
+
+.output-header {
+    overflow: hidden;
+    padding: 0 16px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.output-oneline{
+    max-width: 600px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 24px;
+    user-select: all;
+    white-space: nowrap;
+}
+
+.output-oneline:before{
+    content: 'compiled script:';
+}
+
+.button-new{
+    font-size: 15;
+    text-decoration: none;
+    color: white;
+}
+</style>
+<script id="library" type="bitcoin">
+const loop = (count, template) => {
+    let res = '';
+    for (var i = 0; i < count; i++) {
+        res += template(i, count);
+    }
+    return res;
+}
+
+const map = (array, template, separator='\n') => {
+    return array.map( item => template(item) ).join(separator);
+}
+
+
+OP_BOOLXOR = `
+    OP_2DUP
+    OP_NOT
+    OP_BOOLAND
+    OP_TOALTSTACK
+    OP_SWAP
+    OP_NOT
+    OP_BOOLAND
+    OP_FROMALTSTACKSTACK
+    OP_BOOLOR
+`
+
+
+OP_MUL2 = `OP_DUP OP_ADD`
+
+OP_MUL4 = `${OP_MUL2} ${OP_MUL2}`
+
+OP_MUL8 = `${OP_MUL4} ${OP_MUL2}`
+
+OP_MUL16 = `${OP_MUL8} ${OP_MUL2}`
+
+OP_MUL5 = `
+    OP_DUP
+    OP_TOALTSTACK
+    ${OP_MUL4}
+    OP_FROMALTSTACK
+    OP_DUP
+    OP_TOALTSTACK
+    OP_ADD
+`
+
+OP_MUL13 = `
+    OP_DUP
+    OP_TOALTSTACK
+    ${OP_MUL8}
+    OP_FROMALTSTACK
+    OP_DUP
+    OP_TOALTSTACK
+    ${OP_MUL4}
+    OP_FROMALTSTACK
+    OP_ADD
+    OP_ADD
+`;
+
+OP_MUL65 = `
+    ${OP_MUL5}
+    ${OP_MUL13}
+`;
+</script>
+<script type="text/bitcoin" id="demo">
+/*
+    Welcome To Bitcoin Script Editor
+*/
+
+/* Standard Scripts */ 
+
+OP_1
+OP_2
+OP_ADD
+OP_3
+OP_EQUALVERIFY
+
+
+
+/* composed OP_CODES */ 
+
+OP_2
+${OP_MUL5}
+6
+OP_EQUALVERIFY
+
+
+
+/* Looping a template */ 
+
+${loop( 5 , index => `
+OP_SWAP
+OP_IF
+    OP_SHA256 OP_FROMALTSTACK ${2**index} OP_ADD OP_TOALTSTACK
+OP_ENDIF
+OP_HASH160
+`)}
+</script>
+
+<script type="text/javascript">
+const $input = document.querySelector('.input');
+const $outputPretty = document.querySelector('.output-pretty');
+const $opcodeCount = document.querySelector('.opcode-count');
+const $outputOneline = document.querySelector('.output-oneline');
+const $library = document.querySelector('#library');
+$input.addEventListener('input', _ => onInput());
+
+async function onInput() {
+    const input = $input.value.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, ''); // Replace comments
+
+    const enviroment = $library.textContent;
+    const template = "`" + input + "`";
+    const output = await executeInSandbox(enviroment + template);
+    $outputPretty.textContent = output;
+
+    const outputClean = output.replace(/\s\s+/g, ' ');
+    const opcodeCount = (outputClean.match(/OP_/g) || []).length;
+    $opcodeCount.textContent = 'opcode count: ' + opcodeCount;
+    $outputOneline.textContent = outputClean;
+}
+onInput();
+
+function executeInSandbox(unsafeScript) {
+    return new Promise(resolve => {
+
+        const iframe = document.createElement('iframe');
+        iframe.style.position = 'fixed';
+        iframe.style.top = '-100000px';
+        iframe.sandbox = 'allow-scripts';
+
+        const unsafeScriptBase64 = btoa(unsafeScript);
+        const html = `
+            <script>
+                const msg = eval(atob(location.hash.substr(1)));
+                window.parent.postMessage(msg,'*')
+            </scr` + 'ipt>';
+        const htmlBase64 = btoa(html);
+        const dataUrl = `data:text/html;base64,${htmlBase64}#${unsafeScriptBase64}`;
+
+        iframe.src = dataUrl;
+        document.body.appendChild(iframe);
+
+        const receiveListener = addEventListener('message', event => {
+            removeEventListener('message', receiveListener);
+            if (event.origin !== 'null')
+                return;
+            iframe.remove()
+            resolve(event.data);
+        }, false);
+
+
+    })
+}
+
+function copyToClipboard(text){
+
+}
+
+
+</script>
+<script type="text/javascript">
+// Router
+addEventListener('hashchange', onHashChange);
+
+function onHashChange() {
+    const urlParam = location.hash.substr(1);
+    if(!urlParam){
+        $input.value = document.querySelector('#demo').textContent;
+    } else if(urlParam == 'new'){
+        $input.value = '/* A Bitcoin Script */';
+        return;
+    } else {
+        $input.value = fromUrlParam(urlParam);
+    }
+    
+    onInput();
+}
+
+function fromUrlParam(urlParam) {
+    return atob(urlParam)
+}
+
+function toUrlParam(script) {
+    return btoa(script);
+}
+
+$input.addEventListener('input', _ => {
+    location.hash = toUrlParam($input.value);
+});
+
+addEventListener('load', onHashChange)
+</script>
+<script type="text/javascript">
+// Use tab to indent in textarea 
+// https://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea
+var textareas = document.getElementsByTagName('textarea');
+var count = textareas.length;
+for (var i = 0; i < count; i++) {
+    textareas[i].onkeydown = function(e) {
+        if (e.keyCode == 9 || e.which == 9) {
+            e.preventDefault();
+            var s = this.selectionStart;
+            this.value = this.value.substring(0, this.selectionStart) + "    " + this.value.substring(this.selectionEnd);
+            this.selectionEnd = s + 1;
+        }
+    }
+}
+</script>
