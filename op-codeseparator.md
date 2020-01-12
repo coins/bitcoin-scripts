@@ -137,7 +137,7 @@ After some arbitrary recursion depth we can settle the branch and continue with 
 
 # Efficient Payment Channel
 
-In today's Bitcoin script `OP_CODESEPARATOR` might be one of the most useful opcodes. It lets you sign off on specific execution paths. With this primitive and 2-of-2 MultiSigs we can build more efficient payment channels. The renegotation protocol simplifies existing off-chain protocols, and enables new use cases. 
+In today's Bitcoin script `OP_CODESEPARATOR` might be one of the most powerful "non-standard" opcodes. It lets you sign off on specific execution paths. With this primitive and 2-of-2 MultiSigs we can build more efficient payment channels. The renegotation protocol simplifies existing off-chain protocols, and enables new use cases. 
 
 ## Example:
 
