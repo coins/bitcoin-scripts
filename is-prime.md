@@ -1,4 +1,7 @@
 # Primitive Primality Test
+
+Checks if the input is a prime in [1..37].
+
 ```
 
 btcdeb "[
