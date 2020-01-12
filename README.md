@@ -10,4 +10,4 @@ Examples:
 
 and more.
 
-There's also a primitive [Script Editor](https://coins.github.io/bitcoin-scripts/script-editor). It simplifies editing of script with lots of reoccuring patterns.
+There's also a primitive [Script Editor](https://coins.github.io/bitcoin-scripts/script-editor). It simplifies editing of Bitcoin Scripts with repeating OP_CODE patterns.
