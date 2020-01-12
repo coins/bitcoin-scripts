@@ -9,3 +9,5 @@ Examples:
 - [Make sense of OP_CODESEPERATOR](op-codeseparator.md)
 
 and more.
+
+There's also a primitive [Script Editor](https://coins.github.io/bitcoin-scripts/script-editor). It simplifies editing of script with lots of reoccuring patterns.
