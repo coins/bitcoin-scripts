@@ -1,6 +1,6 @@
 # OP_CODESEPARATOR 
 
-OP_CODESEPARATOR let's you sign off on a specific script execution path -- a powerful primitive that we can use for interesting constructions.
+OP_CODESEPARATOR let's you sign off on a specific script execution path -- a powerful primitive that we can use for interesting constructions?
 
 
 ## Payment Channels Alternative 
