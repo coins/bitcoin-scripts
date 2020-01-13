@@ -135,9 +135,9 @@ After some arbitrary recursion depth we can settle the branch and continue with 
 
 
 
-# Efficient Payment Channel
+# Off-chain Updates of Payment Channels
 
-In today's Bitcoin script `OP_CODESEPARATOR` might be one of the most powerful "non-standard" opcodes. It lets you sign off on specific execution paths. With this primitive and 2-of-2 MultiSigs we can build more efficient payment channels. The renegotation protocol simplifies existing off-chain protocols, and enables new use cases. 
+In today's Bitcoin script `OP_CODESEPARATOR` might be a powerful "non-standard" opcode. It lets you sign off on specific execution paths. With this primitive and 2-of-2 MultiSigs we can build payment channels. The renegotation protocol might simplify existing off-chain protocols, and enable new use cases. 
 
 ## Example:
 
@@ -197,8 +197,8 @@ Spendable with one of the following witnesses:
 - It is not required to stay online to watch the channel. An attacker cannot cheat until the time lock opens.
 - It is possible to chain multiple transactions and settle them all off-chain by opening the next time lock of the on-chain transaction output.
 - Given the size constraints of Bitcoin scripts, a single transaction can have more than 65 sub-branches.
-- That allows basically Eltoo without any fork.
-- That allows channel factories and off-chain onboarding of new users.
+- Does it allow Eltoo-like channels without any fork?
+ - Can we build channel factories to on-board new users off-chain?
 
 
 
