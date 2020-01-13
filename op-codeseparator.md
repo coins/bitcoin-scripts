@@ -116,7 +116,7 @@ Spendable with one of the following:
 ```
 
 This could work recursively, such that we repeat the same contract in a next transaction authorized by the first branch of the previous transaction. 
-After some arbitrary recursion depth we can settle the branch and continue with the next branch of the previous transaction.
+After some arbitrary recursion depth we can settle the full branch and continue with the next branch of the base transaction.
 
 
 
