@@ -196,6 +196,7 @@ Spendable with one of the following witnesses:
 ## Features:
 - It is not required to stay online to watch the channel. An attacker cannot cheat until the time lock opens.
 - It is possible to chain multiple transactions and settle them all off-chain by opening the next time lock of the on-chain transaction output.
+- not required to store any state updates other than the most recent one
 - Given the size constraints of Bitcoin scripts, a single transaction can have more than 65 sub-branches.
 - Does it allow Eltoo-like channels without any fork?
  - Can we build channel factories to on-board new users off-chain?
