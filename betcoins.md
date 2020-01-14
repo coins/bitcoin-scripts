@@ -126,7 +126,7 @@ In the following we denote the above script with `OP_BET( C1, C2 )` which the wi
 ## Withholding Attacks
 
 We need to prevent data withholding attacks. We enforce revealing pre-images with timelocks.
-We chain transactions such that an attacker has to reveal his pre-image or loose. 
+We chain transactions such that an attacker has to reveal his pre-image or lose. 
 
 ### Naive Solution with a Collateral
 A simple solution is using deposits. 
