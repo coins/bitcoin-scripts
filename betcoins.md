@@ -1,6 +1,6 @@
 # Betcoins - A trustless Bitcoin betting protocol
 
-Betcoins is a protocol for trustless Bitcoin bets. It use only OP-codes currently supported in Bitcoin Script. It allows any bet sizes, any discrete probability distributions and any payout sizes. It can be generalized to an election of a random leader.
+Betcoins is a protocol for trustless Bitcoin bets. It uses only OP-codes currently supported in Bitcoin Script. It allows any bet sizes, any discrete probability distributions and any payout sizes. It can be generalized to an election of a random leader.
 
 ## Naive Betting
 
