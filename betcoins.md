@@ -31,7 +31,7 @@ It leaves `N` on the stack. This is a handy primitive because further processing
 Max size of `N` is the max scriptSig size which is 10000 bytes. https://bitcoin.stackexchange.com/questions/35878/is-there-a-maximum-size-of-a-scriptsig-scriptpubkey 
 We discuss the exact boundaries in a later chapter. 
 
-This primitive is also handy for mass-interaction with oracles.
+This preimage length primitive is also handy for mass-interaction with oracles.
 
 
 ### Naive Contract 
