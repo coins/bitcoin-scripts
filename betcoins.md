@@ -8,7 +8,7 @@ Betcoins is a protocol for trustless Bitcoin bets. It uses only OP-codes current
 A number commitment enforces a spender to reveal some secret number `N`. For a coin flip `N` is simply 0 or 1. 
 
 1. Choose secret number `N` in `{0,1}`
-2. Choose secret nonce `R` which is `N + 16` bytes of randomness 
+2. Choose secret nonce `R` which is `N + 16` bytes of randomness ( so either 16 or 17 bytes of randomness )
 3. The public commitment is `C = SHA256( R )`
 
 The following scriptPubKey enforces the spender to reveal `R` and thus `N`:
