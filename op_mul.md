@@ -8,7 +8,7 @@ OP_MUL2 = OP_DUP OP_ADD
 ```
 
 ## OP_MUL(2^k)
-Multiply by power of 2
+Multiply by powers of 2
 ```
 OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_MUL2 
 ```
@@ -17,7 +17,7 @@ Examples:
 ```
 OP_MUL4 = OP_DUP OP_ADD OP_DUP OP_ADD
 OP_MUL8 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
-OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
+OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ...
 ```
 
