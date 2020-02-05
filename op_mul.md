@@ -88,4 +88,10 @@ btcdeb "[
 "] 60 14
 ```
 
-Side note: `opcode count = 52`.
+#### Side note: 
+Size of `b`:
+- `4 bits -> 52 opcodes`
+- `5 bits -> 71 opcodes`
+- `6 bits -> 92 opcodes`
+- `7 bits -> 115 opcodes`
+- `8 bits -> 140 opcodes`
