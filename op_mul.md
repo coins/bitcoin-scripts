@@ -22,7 +22,8 @@ OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ```
 
 ## OP_MUL
-Multiply `a` by `b`. The circut is linear in the size of `b`. In this code example we restrict `b<16`. The result of `a * b` must fit into a signed 32-bit integer.
+Multiply `a` by `b`. The result of `a * b` must fit into a signed 32-bit integer.
+Additionally, in the following script we restrict `b` to be a 4-bit integer.
 
 ```
 btcdeb "[
@@ -87,8 +88,8 @@ btcdeb "[
 "] 60 14
 ```
 
-#### Side note: 
-Size of `b`:
+#### Circut Size 
+The number of required opcodes is linear in bit size of `b`:
 - `4 bits -> 52 opcodes`
 - `5 bits -> 71 opcodes`
 - `6 bits -> 92 opcodes`
