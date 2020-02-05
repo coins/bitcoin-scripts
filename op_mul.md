@@ -22,8 +22,7 @@ OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ```
 
 ## OP_MUL
-Multiply `a` by `b`.
-In this code example, `b` must be smaller than `16`.
+Multiply `a` by `b`. The circut is linear in the size of `b`. In this code example we restrict `b<16`. The result of `a * b` must fit into a signed 32-bit integer.
 
 ```
 btcdeb "[
