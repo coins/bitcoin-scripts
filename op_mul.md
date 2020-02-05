@@ -95,3 +95,5 @@ Size of `b`:
 - `6 bits -> 92 opcodes`
 - `7 bits -> 115 opcodes`
 - `8 bits -> 140 opcodes`
+
+Maximum number of opcodes per script is 201 ([source](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script)).
