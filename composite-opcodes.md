@@ -4,6 +4,7 @@ We can define custom op_codes by chaining existing op_codes.
 
 ## OP_MUL
 
+You can find a [full implementation of `OP_MUL` here](op_mul.md).
 
 ### OP_MUL2
 Multiplies the top stack item by 2.
