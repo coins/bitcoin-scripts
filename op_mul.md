@@ -1,0 +1,69 @@
+# OP_MUL
+We construct an opcode to multiply a by b. The following is a sketch
+
+## OP_MUL2
+```
+OP_MUL2 = OP_DUP OP_ADD
+```
+
+## OP_MUL(2^k)
+```
+OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_MUL2 
+```
+
+Examples:
+```
+OP_MUL4 = OP_DUP OP_ADD OP_DUP OP_ADD
+OP_MUL8 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
+OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
+...
+```
+
+## OP_MUL
+In this example, `b` must be smaller than `32`.
+
+```
+OP_DUP
+16
+OP_GREATERTHANOREQUAL
+OP_IF
+  16 
+  OP_SUB
+  OP_SWAP
+  OP_MUL16
+  OP_SWAP
+OP_ENDIF
+
+OP_DUP
+8
+OP_GREATERTHANOREQUAL
+OP_IF
+  8 
+  OP_SUB
+  OP_SWAP
+  OP_MUL8
+  OP_SWAP
+OP_ENDIF
+
+OP_DUP
+4
+OP_GREATERTHANOREQUAL
+OP_IF
+  4 
+  OP_SUB
+  OP_SWAP
+  OP_MUL4
+  OP_SWAP
+OP_ENDIF
+
+OP_DUP
+2
+OP_GREATERTHANOREQUAL
+OP_IF
+  2 
+  OP_SUB
+  OP_SWAP
+  OP_MUL2
+  OP_SWAP
+OP_ENDIF
+```
