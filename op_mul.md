@@ -35,7 +35,7 @@ btcdeb "[
     8 
     OP_SUB
     OP_SWAP
-    OP_DUP
+    OP_DUP 
     OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
     OP_FROMALTSTACK
     OP_ADD
@@ -50,7 +50,7 @@ btcdeb "[
     4 
     OP_SUB
     OP_SWAP
-    OP_DUP
+    OP_DUP 
     OP_DUP OP_ADD OP_DUP OP_ADD
     OP_FROMALTSTACK
     OP_ADD
@@ -65,22 +65,22 @@ btcdeb "[
     2 
     OP_SUB
     OP_SWAP
-    OP_DUP
+    OP_DUP 
     OP_DUP OP_ADD
     OP_FROMALTSTACK
     OP_ADD
     OP_TOALTSTACK
-    OP_DROP
+    OP_SWAP
   OP_ENDIF
 
+  OP_NOT
   OP_IF
-    1
-  OP_ELSE
+    OP_DROP
     0
   OP_ENDIF
+
   OP_FROMALTSTACK
   OP_ADD
 
-
-"] 4 14
+"] 60 14
 ```
