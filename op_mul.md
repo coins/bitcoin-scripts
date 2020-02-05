@@ -2,11 +2,13 @@
 We construct an opcode to multiply a by b. The following is a sketch
 
 ## OP_MUL2
+Multiply by 2
 ```
 OP_MUL2 = OP_DUP OP_ADD
 ```
 
 ## OP_MUL(2^k)
+Multiply by power of 2
 ```
 OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_MUL2 
 ```
@@ -20,7 +22,8 @@ OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ```
 
 ## OP_MUL
-In this example, `b` must be smaller than `16`.
+Multiply `a` by `b`.
+In this code example, `b` must be smaller than `16`.
 
 ```
 btcdeb "[
@@ -84,3 +87,5 @@ btcdeb "[
 
 "] 60 14
 ```
+
+Side note: `opcode count = 52`.
