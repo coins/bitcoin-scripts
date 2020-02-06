@@ -2,6 +2,8 @@
 
 We can define custom op_codes by chaining existing op_codes. 
 
+> DISCLAIMER: DO NOT USE IN PRODUCTION! THE CODE IS INSECURE!
+
 ## OP_MUL
 
 You can find a [full implementation of `OP_MUL` here](op_mul.md).
@@ -141,20 +143,20 @@ A signature can't sign itself. Thus, a signature commitment is possible only if 
 - The first signature pre-commits to the follow-up transaction with `OP_SIGCOMMITMENT` and `SIGHASH_NOINPUTS`
 - The second is a regular signature authorizing the transaction for execution 
 
-## Non-Malleable Commitment 
-
+## Non-Malleable Bit Commitment 
+The following scripts ensures an input is either exactly `1` or `0`, represented unambiguously as `01` or `0x` respectively. Any other variations of `1` or `0` results in an error.
 ```
-OP_DUP OP_IF OP_DROP 1 OP_ELSE OP_DROP 0 OP_ENDIF
+OP_DUP OP_SIZE OP_EQUALVERIFY
 ```
+This prevents malleability of script inputs.
 
 ## Script Limits
 
-- [Maximum number of op_codes in script
-](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
-- [520-byte limitation on serialized script size](https://github.com/bitcoin/bips/blob/master/
-bip-0016.mediawiki#520-byte-limitation-on-serialized-script-size)
+- [Maximum number of op_codes in script](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
+- [520-byte limitation on serialized script size](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki#520-byte-limitation-on-serialized-script-size)
 - max push is 520 bytes
 - There is positive zero `0x` and negative zero `0x80`. Both can have trailing zeros i.e `0x0080`. There are 1041 different encodings for False.
 
 ## See Also 
-[https://github.com/kristovatlas/interesting-bitcoin-data](Interesting data artifacts from the Bitcoin blockchain)
+
+[Interesting data artifacts from the Bitcoin blockchain](https://github.com/kristovatlas/interesting-bitcoin-data)
