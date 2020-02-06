@@ -1,5 +1,7 @@
 # OP_MUL
-The following is a sketch of a bitcoin script implementing the opcode `OP_MUL` to multiply `a` by `b`. 
+The following is a bitcoin script implementing the opcode `OP_MUL` to multiply `a` by `b`. 
+
+DISCLAIMER: THE CODE IS INSECURE! DO NOT USE IN PRODUCTION!!
 
 ## OP_MUL2
 Multiply by 2
