@@ -20,7 +20,7 @@ Redeem example:
 <sig_1> <sig_2> <sig_5>
 ```
 
-## Weighted Multi-Sig
+## Weighted Multi-Sig 3-of-5
 Weighted 3-of-5 with `pub_key_1` having up to two votes:
 ```
 OP_IF
@@ -46,3 +46,33 @@ or
 ```
 1 <sig_1> <sig_4>
 ```
+
+
+## Weighted Multi-Sig 4-of-7
+Weighted 4-of-7 with `pub_key_1` having exactly three votes:
+
+```
+OP_DUP
+OP_DUP
+
+4
+<pub_key_1>
+OP_DUP
+OP_DUP
+<pub_key_2>
+<pub_key_3>
+<pub_key_4>
+7
+OP_CHECKMULTISIG
+```
+
+Redeem example:
+```
+<sig_1> <sig_2>
+```
+
+or
+```
+<sig_1> <sig_3>
+```
+
