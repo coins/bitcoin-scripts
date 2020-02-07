@@ -21,4 +21,4 @@ Note: In many examples we're using the [Bitcoin Script Debugger](https://github.
 
 ## Disclaimer 
 
->> DO NOT USE IN PRODUCTION! THE SCRIPTS ARE NOT SECURE!
+> **DO NOT USE IN PRODUCTION! THE SCRIPTS ARE NOT SECURE!**
