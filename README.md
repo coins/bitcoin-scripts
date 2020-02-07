@@ -17,3 +17,8 @@ Note: In many examples we're using the [Bitcoin Script Debugger](https://github.
 
 
 [<img src="https://coins.github.io/thx/logo-color-large-pill-320px.png" alt="CoinThx" width="200"/>](https://coins.github.io/thx/#1K9zQ8f4iTyhKyHWmiDKt21cYX2QSDckWB?label=Coins%20Project&message=Thank%20you%20for%20your%20contribution!)
+
+
+## Disclaimer 
+
+>> DO NOT USE IN PRODUCTION! THE SCRIPTS ARE NOT SECURE!
