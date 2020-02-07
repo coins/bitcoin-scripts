@@ -1,4 +1,4 @@
-# Weighted Multi Signature
+# Weighted Multi-Signature
 
 We can express a weighted n-of-m voting by duplicating keys and signatures.
 
