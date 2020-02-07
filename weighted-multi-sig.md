@@ -4,7 +4,7 @@ We can express a weighted n-of-m voting by duplicating keys and signatures.
 
 
 ## Regular Multi-Sig
-3-of-5
+Regular 3-of-5 example:
 ```
 3 
 <pub_key_1> 
@@ -21,7 +21,7 @@ Redeem example:
 ```
 
 ## Weighted Multi-Sig
-Weighted 3-of-5 with `pub_key_1` having up to two votes. 
+Weighted 3-of-5 with `pub_key_1` having up to two votes:
 ```
 OP_IF
  OP_DUP
