@@ -74,6 +74,6 @@ ENDIF
 
 
 ## Credits 
-This idea was found on [Twitter in a thread by @JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080).
+This idea was found on Twitter in a thread by [@JWWeatherman_and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080).
 
 See also Pieter Wuille's Miniscript example ["A 3-of-3 that turns into a 2-of-3 after 90 days"](http://bitcoin.sipa.be/miniscript/).
