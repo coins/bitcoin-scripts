@@ -5,6 +5,7 @@ A 3-of-5 bitcoin multisig, that after 60 months decays into a 2-of-5, and after 
 It makes it easy for the user to secure only 5 keys while at the same time allowing the user to lose 4 keys and still recover funds.
 The downside is you need to move funds every 5 years, but I think that’s reasonable to avoid 2 extra keys to secure.
 
+## Basic Idea
 ```
 IF
   3
@@ -21,6 +22,27 @@ ENDIF
 
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
+
+## Optimization 1 
+We can optimize the above code a bit to save two opcodes:
+```
+IF
+  3
+ELSE
+  IF
+    2
+    "60 months" 
+  ELSE
+    1
+    "66 months"
+  ENDIF
+  CHECKSEQUENCEVERIFY DROP
+ENDIF
+
+
+<pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
+```
+
 
 ## Credits 
 This idea was found on [Twitter in a thread by @JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080).
