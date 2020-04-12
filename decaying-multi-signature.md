@@ -23,7 +23,7 @@ ENDIF
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
 
-## Optimization 1 
+### A Small Optimization
 We can optimize the above code a bit to save two opcodes:
 ```
 IF
