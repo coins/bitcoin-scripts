@@ -43,6 +43,35 @@ ENDIF
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
 
+### Non-Malleability 
+Our script takes up to two booleans as inputs. These should be non-malleable.
+
+The following primitive ensures an input of expected type "boolean" is exactly either `0x1` or `0x`:
+
+```
+OP_DUP OP_SIZE OP_EQUALVERIFY
+```
+Inserted into our script:
+```
+OP_DUP OP_SIZE OP_EQUALVERIFY
+IF
+  3
+ELSE
+  OP_DUP OP_SIZE OP_EQUALVERIFY
+  IF
+    2
+    "60 months" 
+  ELSE
+    1
+    "66 months"
+  ENDIF
+  CHECKSEQUENCEVERIFY DROP
+ENDIF
+
+
+<pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
+```
+
 
 ## Credits 
 This idea was found on [Twitter in a thread by @JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080).
