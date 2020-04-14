@@ -11,10 +11,10 @@ IF
   3
 ELSE
   IF
-    "60 months" CHECKSEQUENCEVERIFY DROP
+    <now + 60 months> OP_CHECKLOCKTIMEVERIFY DROP
     2
   ELSE
-    "66 months" CHECKSEQUENCEVERIFY DROP
+    <now + 66 months> OP_CHECKLOCKTIMEVERIFY DROP
     1
   ENDIF
 ENDIF
@@ -31,12 +31,12 @@ IF
 ELSE
   IF
     2
-    "60 months" 
+    <now + 60 months>
   ELSE
     1
-    "66 months"
+    <now + 66 months>
   ENDIF
-  CHECKSEQUENCEVERIFY DROP
+  OP_CHECKLOCKTIMEVERIFY DROP
 ENDIF
 
 
@@ -60,17 +60,21 @@ ELSE
   OP_DUP OP_SIZE OP_EQUALVERIFY
   IF
     2
-    "60 months" 
+    <now + 60 months>
   ELSE
     1
-    "66 months"
+    <now + 66 months>
   ENDIF
-  CHECKSEQUENCEVERIFY DROP
+  OP_CHECKLOCKTIMEVERIFY DROP
 ENDIF
 
 
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
+
+
+### Multiple UTXOs 
+All your UTXOs should decay at the same time so that your HD seeds can recover all funds. That's why we use *absolute* timelocks with `OP_CHECKLOCKTIMEVERIFY` instead of *relative* timelocks with `OP_CHECKSEQUENCEVERIFY`.
 
 
 ## Credits 
