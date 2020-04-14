@@ -10,7 +10,7 @@ Examples:
 
 and more.
 
-There's also a primitive [Script Editor](https://coins.github.io/bitcoin-scripts/script-editor). It simplifies editing of Bitcoin Scripts with repeating OP_CODE patterns.
+There's also a primitive [Script Editor](https://coins.github.io/bitcoin-scripts/script-editor). It simplifies editing of Bitcoin Scripts with repeating opcode patterns.
 
 Note: In many examples we're using the [Bitcoin Script Debugger](https://github.com/kallewoof/btcdeb). It's a great tool for debugging bitcoin scripts.
 
