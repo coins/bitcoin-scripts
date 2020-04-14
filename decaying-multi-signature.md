@@ -11,10 +11,10 @@ IF
   3
 ELSE
   IF
-    <now + 60 months> OP_CHECKLOCKTIMEVERIFY DROP
+    <now + 60 months> CHECKLOCKTIMEVERIFY DROP
     2
   ELSE
-    <now + 66 months> OP_CHECKLOCKTIMEVERIFY DROP
+    <now + 66 months> CHECKLOCKTIMEVERIFY DROP
     1
   ENDIF
 ENDIF
@@ -36,7 +36,7 @@ ELSE
     1
     <now + 66 months>
   ENDIF
-  OP_CHECKLOCKTIMEVERIFY DROP
+  CHECKLOCKTIMEVERIFY DROP
 ENDIF
 
 
@@ -49,15 +49,16 @@ Our script takes up to two booleans as inputs. These should be non-malleable.
 The following primitive ensures an input of expected type "boolean" is exactly either `0x1` or `0x`:
 
 ```
-OP_DUP OP_SIZE OP_EQUALVERIFY
+DUP SIZE EQUALVERIFY
 ```
+
 Inserted into our script:
 ```
-OP_DUP OP_SIZE OP_EQUALVERIFY
+DUP SIZE EQUALVERIFY
 IF
   3
 ELSE
-  OP_DUP OP_SIZE OP_EQUALVERIFY
+  DUP SIZE EQUALVERIFY
   IF
     2
     <now + 60 months>
@@ -65,7 +66,7 @@ ELSE
     1
     <now + 66 months>
   ENDIF
-  OP_CHECKLOCKTIMEVERIFY DROP
+  CHECKLOCKTIMEVERIFY DROP
 ENDIF
 
 
@@ -74,7 +75,7 @@ ENDIF
 
 
 ### Multiple UTXOs 
-All your UTXOs should decay at the same time so that your HD seeds can recover all funds. That's why we use *absolute* timelocks with `OP_CHECKLOCKTIMEVERIFY` instead of *relative* timelocks with `OP_CHECKSEQUENCEVERIFY`.
+All your UTXOs should decay at the same time so that your HD seeds can recover all funds. That's why we use *absolute* timelocks with `CHECKLOCKTIMEVERIFY` instead of *relative* timelocks with `CHECKSEQUENCEVERIFY`.
 
 
 ## Credits 
