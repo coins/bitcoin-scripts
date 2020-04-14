@@ -75,7 +75,7 @@ ENDIF
 
 
 ### Multiple UTXOs 
-All your UTXOs should decay at the same time so that your HD seeds can recover all funds. That's why we use *absolute* timelocks with `CHECKLOCKTIMEVERIFY` instead of *relative* timelocks with `CHECKSEQUENCEVERIFY`.
+All your UTXOs should decay at the same time so that your HD seeds can recover all funds. That's why we use the *absolute* timelock `CHECKLOCKTIMEVERIFY` instead of the *relative* timelock`CHECKSEQUENCEVERIFY`.
 
 
 ## Credits 
