@@ -1,5 +1,5 @@
 # Bitcoin Scripts
-What's possible in Bitcoin's transaction scripting language? A chaotic compilation of exotic bitcoin scripts.
+What's possible in Bitcoin's transaction scripting language? A random compilation of exotic bitcoin scripts.
 
 Examples:
 - [Betcoins](betcoins.md)
