@@ -19,7 +19,6 @@ ELSE
   ENDIF
 ENDIF
 
-
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
 
@@ -38,7 +37,6 @@ ELSE
   ENDIF
   CHECKLOCKTIMEVERIFY DROP
 ENDIF
-
 
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
@@ -68,7 +66,6 @@ ELSE
   ENDIF
   CHECKLOCKTIMEVERIFY DROP
 ENDIF
-
 
 <pubkey_1> <pubkey_2> <pubkey_3> <pubkey_4> <pubkey_5> 5 CHECKMULTISIG
 ```
