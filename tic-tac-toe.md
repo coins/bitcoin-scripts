@@ -4,7 +4,7 @@ The game [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) represented in
 Scriptless scripts and the replace-by-fee mechanism are used to implement the full game logic.
 
 Before the game starts the tree of possible moves is scaffolded out. There are 26830 different games. Every possible move is represented by a transaction with a 2-of-2 MuSig splitting the key among both players. 
-All of these transactions compete to spend the same output. If any transaction hits the chain it gives the bitcoins to the current player (or returns it in case of a draw). There are no further scripts.
+All of these transactions compete to spend the same output. If any transaction hits the chain it gives the bitcoins to the current player (or refunds both players in case of a draw). There are no further scripts.
 In the non-cooperative case older transactions are replaced by newer transactions via the replace-by-fee mechanism. 
 
 Before the game starts, each player traverses the tree of game states and signs every possible move of their opponent. The player subtracts his signature by his signature of the parent transaction that leads to this particular game state. 
