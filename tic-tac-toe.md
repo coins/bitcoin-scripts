@@ -7,6 +7,8 @@ Before the game starts the tree of possible moves is scaffolded out. There are 2
 All of these transactions compete to spend the same output. If any transaction hits the chain it gives the bitcoins to the current player (or refunds both players in case of a draw). There are no further scripts.
 In the non-cooperative case older transactions are replaced by newer transactions via the replace-by-fee mechanism. 
 
+<img src=tictactoe.png>
+
 Before the game starts, each player traverses the tree of game states and signs every possible move of their opponent. The player subtracts his signature by his signature of the parent transaction that leads to this particular game state. 
 These so-called *adapter signatures* form a tree which is exchanged upfront. This ensures a player can execute a transaction exactly if the opponent executed the preceding round. 
 
