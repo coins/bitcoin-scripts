@@ -1,6 +1,6 @@
 # Tic Tac Toe in a Schnorr Signature
 
-The game [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) represented in Bitcoin. This model requires only a single onchain transaction containing a single Schnorr signature. 
+A sketch of some ideas to implement the game [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) in Bitcoin. This model requires only a single onchain transaction containing a single Schnorr signature. 
 Scriptless scripts and the replace-by-fee mechanism are used to implement the full game logic.
 
 Before the game starts the tree of possible moves is scaffolded out. There are 26830 different games. Every possible move is represented by a transaction with a 2-of-2 MuSig splitting the key among both players. 
