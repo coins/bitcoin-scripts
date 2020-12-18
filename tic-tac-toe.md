@@ -27,5 +27,5 @@ Only one last transaction hits the chain and spends the output.
 
 ## Shortcomings 
 - The game must end before an intermediate game state hits the chain. 
-- Using RBF as consensus mechanism is risky. This update mechanism depends on the mempool of bitcoin miners. We assume no player cooperates with a miner. Also, players have to finish the game before an intermediate TX hits the chain.
+- Using RBF as consensus mechanism is risky. This update mechanism depends on the mempool of bitcoin miners. We assume no player cooperates with a miner. 
 - The players have to sign and exchange the whole game tree upfront, which is about 25000 signatures per game.
