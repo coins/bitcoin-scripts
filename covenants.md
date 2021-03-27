@@ -15,7 +15,7 @@ This works on today's Bitcoin. No consensus changes are necessary.
 ## Optimization
 When choosing `r = 1` and `s = 0` the public key recovery results in `<pubkey> = -zG` where `z` is simply `H(m)`.
 
-This trick reduces the script size to about 40 bytes.
+This reduces the script size to almost 40 bytes. (The signature's DER encoding costs an overhead of 6 bytes.)
 
 
 ## Applications
