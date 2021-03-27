@@ -13,7 +13,7 @@ The following redeem script implements a covenant:
 This works on today's Bitcoin. No consensus changes are necessary.
 
 ## Optimization
-When choosing `r = 1` and `s = 0` the ECDSA key recovery results in `<pubkey> = -zG` where `z` is simply `H(m)`.
+When choosing `r = 1` and `s = 0` the public key recovery results in `<pubkey> = -zG` where `z` is simply `H(m)`.
 
 This trick reduces the script size to about 40 bytes.
 
