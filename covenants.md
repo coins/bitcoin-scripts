@@ -1,6 +1,6 @@
 # Bitcoin Covenants
 
-The following redeem script implements a covenant:
+The following redeem script implements a [covenant](https://link.springer.com/chapter/10.1007/978-3-662-53357-4_9):
 
 ```
 <sig> <pubkey> OP_CODESEPARATOR OP_CHECKSIGVERIFY
