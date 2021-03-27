@@ -10,7 +10,9 @@ The following redeem script implements a [covenant](https://link.springer.com/ch
 `<sig>` is just a random signature pair `(r,s)` and `<pubkey>` is the result of [ECDSA public key recovery](https://crypto.stackexchange.com/questions/18105/how-does-recovering-the-public-key-from-an-ecdsa-signature-work) applied to that ‘signature’ and the message the covenant commits to.
 
 
-This works on today's Bitcoin. No consensus changes are necessary.
+- Works on today's Bitcoin. No forks required. 
+- Conditional covenants are possible.
+- Covenants can make use of all sighash flags.
 
 ## Optimization
 When choosing `r = 1` and `s = 0` the public key recovery results in `<pubkey> = -zG` where `z` is basically `H(m)`.
