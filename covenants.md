@@ -13,7 +13,7 @@ The following redeem script implements a covenant:
 ## Optimization
 When choosing `r = 1` and `s = 0` the ECDSA key recovery results in `<pubkey> = -zG` where `z` is simply `H(m)`.
 
-Using this trick the script size reduces to about 40 bytes.
+This trick reduces the script size to about 40 bytes.
 
 
 ## Applications
