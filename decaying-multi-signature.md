@@ -83,7 +83,7 @@ See also Pieter Wuille's Miniscript example ["A 3-of-3 that turns into a 2-of-3 
 
 
 # Alternative Decaying MultiSig
-A decaying MultiSig is also possible using a regular MultiSig. One party creates a TX with a `nLocktime` and signs it using `SIGHASH_NONE`. Such a partially signed transaction makes an UTXO decay into a MultiSig with a lower threshold.
+A decaying MultiSig is also possible using a regular MultiSig. One party creates a TX with a `nLocktime` and signs it using `SIGHASH_NONE`. Such a partially signed transaction makes an UTXO decay into a MultiSig with a threshold decremented by 1.
 
 ### Drawbacks 
 - It requires interaction. 
