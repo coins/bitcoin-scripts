@@ -79,3 +79,14 @@ All your UTXOs should decay at the same time so that your HD seeds can recover a
 This idea was found on Twitter in a thread by [@JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080).
 
 See also Pieter Wuille's Miniscript example ["A 3-of-3 that turns into a 2-of-3 after 90 days"](http://bitcoin.sipa.be/miniscript/).
+
+
+
+# Alternative Decaying MultiSig
+A decaying MultiSig is also possible using a regular MultiSig. One party creates a TX with a `nLocktime` and signs it using `SIGHASH_NONE`. Such a partially signed transaction makes an UTXO decay into a MultiSig with a lower threshold.
+
+### Drawbacks 
+- It requires interaction. 
+- It requires a new TX for every UTXO. 
+- Each party has to sign such a TX. 
+- Each party has to store all TXs securely.
