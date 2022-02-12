@@ -74,9 +74,12 @@ ENDIF
 ### Multiple UTXOs 
 All your UTXOs should decay at the same time so that your HD seeds can recover all funds. That's why we use the *absolute* timelock `CHECKLOCKTIMEVERIFY` instead of the *relative* timelock`CHECKSEQUENCEVERIFY`.
 
+### Relative Timelocks
+If we don't want to move our funds every 5 years we can use a kick-off transaction and relative timelocks. E.g. the kickoff transaction creates a 3-of-5 output that decays into a 2-of-5 one year after it hit the chain. This way we have to reset the MultiSig only in case the kickoff transaction was broadcasted maliciously.
+
 
 ## Credits 
-This idea was found on Twitter in a thread by [@JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080).
+The idea for a decaying multisig was found on Twitter in a thread by [@JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080). Our work is an optimisation. 
 
 See also Pieter Wuille's Miniscript example ["A 3-of-3 that turns into a 2-of-3 after 90 days"](http://bitcoin.sipa.be/miniscript/).
 
