@@ -79,7 +79,7 @@ If we don't want to move our funds every 5 years we can use a kick-off transacti
 
 
 ## Credits 
-The idea for a decaying multisig was found on Twitter in a thread by [@JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080). Our work is an optimisation. 
+Our work is an optimisation. The original idea for a decaying multisig was found on Twitter in a thread by [@JWWeatherman_ and @giacomozucco](https://twitter.com/JWWeatherman_/status/1249101431161774080). 
 
 See also Pieter Wuille's Miniscript example ["A 3-of-3 that turns into a 2-of-3 after 90 days"](http://bitcoin.sipa.be/miniscript/).
 
