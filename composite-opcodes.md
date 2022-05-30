@@ -67,7 +67,7 @@ Multiplies the top stack item by 13.
 	OP_ADD
 ```
 
-## Bit Operators
+## Boolean Operators
 
 ### OP_BOOLXOR
 Computes the logical XOR of the top two stack items.
@@ -88,6 +88,29 @@ Computes the logical XOR of the top two stack items.
 
 	OP_BOOLOR
 ```
+
+### OP_BOOLXOR Alternative (Credits: Brill Saton)
+```
+OP_NUMNOTEQUAL
+```
+
+Note: It might actually produce a valid result if the user supplies inputs other than 0 or 1, as long as their inputs are still numbers. So sanitizing inputs here is extra important, otherwise users might lose money by putting bad inputs into the transaction, which still executes, and results in a successful transaction where it really should have failed.
+
+### OP_BOOLXNOR
+```
+OP_NUMEQUAL
+```
+
+
+### Sanitise a Boolean Value
+Ensure a given value is either 0 or 1:
+
+```
+OP_DUP 
+OP_SIZE 
+OP_EQUALVERIFY
+```
+
 
 ## Signatures
 
