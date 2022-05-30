@@ -1,6 +1,6 @@
 # Composite OP_CODES
 
-We can define custom op_codes by chaining existing op_codes. 
+We can define custom opcodes by chaining existing opcodes. 
 
 > DISCLAIMER: DO NOT USE IN PRODUCTION! THE CODE IS INSECURE!
 
