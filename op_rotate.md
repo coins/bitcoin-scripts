@@ -117,6 +117,6 @@ OP_ENDIF
 
 # ]" 0x11111101 0x04
 
-
-# Inputs have to be minimally encoded: 0x040000 -> 0x04
+# Inputs: <Hint(X div 8)> <X>
+# Inputs have to be minimally encoded. E.g., 0x04000000 -> 0x04
 ```
