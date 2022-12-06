@@ -68,7 +68,7 @@ OP_ADD
 ```
 
 
-## OP_MOD2
+### OP_MOD2
 Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
@@ -83,7 +83,7 @@ OP_NUMEQUALVERIFY
 OP_FROMALTSTACK
 ```
 
-## OP_DIV2
+### OP_DIV2
 Integer division by 2 implemented with a _"hint"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
@@ -103,7 +103,7 @@ OP_VERIFY
 We can use our OP_MUL implementations to generalise this for other divisors than 2.
 
 
-## OP_DIV8
+### OP_DIV8
 
 This is an integer division by `8`. The number `123459` is divided by `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently than calculating it ourselves.
 
