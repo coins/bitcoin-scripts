@@ -103,6 +103,27 @@ OP_VERIFY
 We can use our OP_MUL implementations to generalise this for other divisors than 2.
 
 
+## OP_DIV8
+
+This is an integer division by `8`. The number `123459` is divided `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently.
+
+```
+btcdeb "[
+	OP_DUP
+	OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
+	123459
+	OP_SWAP
+	OP_SUB
+	0
+	9
+	OP_WITHIN
+	OP_VERIFY
+# ]" 15432
+```
+
+
+
+
 ## Boolean Operators
 
 ### OP_BOOLXOR
