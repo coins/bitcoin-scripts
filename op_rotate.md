@@ -72,7 +72,7 @@ OP_ELSE
 
 		# We compute the result with the help of a "hint" 
 		# provided by the unlocking script.
-		# We expect that hint to the quotient `value/8`
+		# We expect that hint to be the quotient `value/8`
 		# and the following verifies that this is acutally correct:
 
 		# Copy the hint and multiply it by 8
