@@ -1,7 +1,6 @@
 # Rotate a 32-bit Integer 3 bits to the right
 
-WARNING: This script doesn't work yet because btcdeb keeps replacing the negative zero `00000080` with the positive zero `0`.
-Compiling the script "by hand" to include `00000080` would probably solve the issue. The negative zero is only required to handle the two edge cases where it occurs. The actual algorithm seems to work.
+A Bitcoin Script implementing a bitwise rotation of a 32-bit word.
 
 ```
 btcdeb "[
