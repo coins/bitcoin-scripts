@@ -255,6 +255,20 @@ OP_EQUAL
 
 ```
 
+## OP_MOD2
+Modulo 2 implementend with _"hints"_. So the result of the operation is given to us in the unlocking script and we only _verify_ the result of the operation. This is more efficient than computing the result ourselves. 
+
+```
+<X>
+<X DIV 2>
+<X DIV 2>
+OP_0NOTEQUAL
+OP_DUP
+OP_TOALTSTACK
+OP_ADD
+OP_NUMEQUALVERIFY
+OP_FROMALTSTACK
+```
 
 ## Script Limits
 
