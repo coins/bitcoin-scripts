@@ -5,39 +5,43 @@ Compiling the script "by hand" to include `00000080` would probably solve the is
 
 ```
 btcdeb "[
-	
-# Check if this is the input that maps to negative zero 00000080
+
+# 
+# We have to start with a bit of gymnastics 
+# to deal with the negative zero 00000080
 # We cannot compute negative zero with arithmetic opcodes
 # To work around Bitcoin's quirky arithmetic
 # we simply return a constant in this case
+#
+
+# Check if this is the input that maps to negative zero 
 OP_DUP
 0x04
 OP_EQUAL
 OP_IF
-
 	# This is the input that maps to negative zero	
 	# So we simply return the byte string of negative zero here
 	OP_DROP
 	OP_DROP
-	00000080
+	00000080		# This is a return statement
 
 OP_ELSE
 	# This is not the input that maps to negative zero
 
-	# Now, check if the input itself is the negative zero
+	# Check if the input itself is the negative zero
 	OP_DUP
 	00000080
 	OP_EQUAL
 	OP_IF
 		
-		# The input it the negative zero. This case is handled by a constant, too.
+		# The input is the negative zero. This case is handled by a constant, too.
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
-		00000010
+		00000010	# This is a return statement
 
 	OP_ELSE
 
-		# This is a normal input, so we apply our algorithm
+		# This is not an edge case but a regular input, so we apply our algorithm:
 
 		
 		##################################################################
