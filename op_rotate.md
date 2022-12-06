@@ -1,6 +1,6 @@
-# Rotate a 32-bit Integer 3 bits to the right
+# Bitwise Rotation of a 32-bit Integer
 
-A Bitcoin Script implementing a bitwise rotation of a 32-bit word.
+A Bitcoin Script implementing a bitwise rotation of a 32-bit word 3 bits to the right. 
 
 ```
 btcdeb "[
@@ -41,8 +41,8 @@ OP_ELSE
 
 	OP_ELSE
 
-		# This is not an edge case but a regular number, so we apply our algorithm:
-
+		# Finally we know this is not an edge case but a regular number,
+		# so we apply our algorithm:
 		
 		##################################################################
 
@@ -72,8 +72,8 @@ OP_ELSE
 
 		# We compute the result with the help of a "hint" 
 		# provided by the unlocking script.
-		# We expect the hint to be hint == value // 8
-		# and the following verifies that it is acutally correct:
+		# We expect that hint to the quotient `value/8`
+		# and the following verifies that this is acutally correct:
 
 		# Copy the hint and multiply it by 8
 		OP_DUP
@@ -149,7 +149,6 @@ OP_ELSE
 OP_ENDIF
 
 # ]" 0x11111101 0x88888888
-
 ```
 
 Inputs: 
