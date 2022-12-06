@@ -36,11 +36,10 @@ OP_ELSE
 		00000010
 
 	OP_ELSE
-		# this is a normal input and we apply our algorithm
+		# This is a normal input, so we apply our algorithm
 
 		
 		##################################################################
-
 
 
 
@@ -111,10 +110,7 @@ OP_ELSE
 		OP_ENDIF
 
 
-
-
 		##################################################################
-
 
 	OP_ENDIF
 OP_ENDIF
