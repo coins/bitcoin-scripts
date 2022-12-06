@@ -261,7 +261,7 @@ Modulo 2 implemented with _"hints"_. The result of the operation is given to us 
 ```
 <X>
 <X DIV 2>
-<X DIV 2>
+<X MOD 2>
 OP_0NOTEQUAL
 OP_DUP
 OP_TOALTSTACK
