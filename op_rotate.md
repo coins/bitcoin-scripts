@@ -100,11 +100,11 @@ OP_ELSE
 
 		
 		# Cut off the highest bit of the remainder because this will be our new sign 
-		# The remainder has 3 bits. So the highest bit is 4 = 2**(3-1)
-		# Store the 
+		# The remainder has 3 bits. So the highest bit is set from 4 = 2**(3-1) upwards
 
+		# Check if the highest bit of the remainder is set
 		OP_DUP
-		4   # The highest bit of the remainder
+		4
 		OP_GREATERTHANOREQUAL
 		OP_IF
 			# The bit is set. So cut it off
