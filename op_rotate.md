@@ -5,7 +5,7 @@ Compiling the script "by hand" to include `00000080` would probably solve the is
 
 ```
 btcdeb "[
-
+	
 # 
 # We have to start with a bit of gymnastics here
 # to deal with the negative zero `0x80` and that it 
@@ -19,25 +19,27 @@ OP_DUP
 0x04
 OP_EQUAL
 OP_IF
+
 	# This is the number that maps to negative zero	
 	# So we simply return the byte string of negative zero here
 	OP_DROP
 	OP_DROP
-	0x80			# This is our "return statement"
+	0000000080
 
 OP_ELSE
 	# This is not the number that maps to negative zero
 
 	# Check if the number itself is the negative zero
 	OP_DUP
-	0x08
+	0000000080
 	OP_EQUAL
 	OP_IF
 		
 		# This number is the negative zero. This case is handled by a constant, too.
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
-		0x10		# This is our "return statement"
+		OP_DROP
+		00000010
 
 	OP_ELSE
 
@@ -55,17 +57,18 @@ OP_ELSE
 
 		# The sign rotated becomes the bit at index 31-3 = 28
 		OP_IF
-			268435456 			# This is 2^28
+			# 2^( 31 - 3 )
+			268435456
 		OP_ELSE
 			0
 		OP_ENDIF
 		OP_SWAP
 		OP_ROT
 
-
+		
 		#
 		# Compute div_rem of the value divided by 8
-		# it puts the quotient and the remainder on the stack.
+		# it puts both the quotient and the remainder on the stack.
 		#
 
 		# We compute the result with the help of a hint.
@@ -87,9 +90,9 @@ OP_ELSE
 		OP_WITHIN
 		OP_VERIFY
 
-
-		OP_DUP
 		# Cut off the highest bit of the remainder because this we be our new sign 2**(3-1) 
+		OP_DUP
+		# 2**(3-1) 
 		4
 		OP_GREATERTHANOREQUAL
 		OP_IF
@@ -103,22 +106,23 @@ OP_ELSE
 
 
 		# Shift the remainder 32-3 = 29 bits to the left
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
 
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
 
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
 
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
 		OP_DUP OP_ADD
 
-
-		# Now add all three value up
+		
+		# Now add up all three values
 		OP_ADD 
 		OP_ADD
+
 
 		# Adjust the sign
 		OP_FROMALTSTACK
@@ -126,13 +130,19 @@ OP_ELSE
 			OP_NEGATE
 		OP_ENDIF
 
-		# We're done. The result is on the stack
+		# And we're done. The result is on the stack
 
 	OP_ENDIF
 OP_ENDIF
 
-# ]" 0x11111101 0x04
+# ]" 0x11111101 0x88888888
 
-# Inputs: <Hint: div(abs(X),8)> <X>
-# Inputs have to be minimally encoded. E.g., 0x04000000 -> 0x04
 ```
+
+Inputs: 
+- `<X>`
+- `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8
+
+Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`.
+The negative zero, `0x80`, is encoded as `0x0000000080`
+
