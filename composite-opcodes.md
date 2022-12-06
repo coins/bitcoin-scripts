@@ -116,7 +116,7 @@ btcdeb "[
 	OP_SWAP
 	OP_SUB
 	0
-	9
+	8
 	OP_WITHIN
 	OP_VERIFY
 # ]" 15432
