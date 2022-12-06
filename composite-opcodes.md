@@ -68,6 +68,76 @@ OP_ADD
 ```
 
 
+## OP_MOD2
+Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
+
+```
+<X>
+<X DIV 2>
+<X MOD 2>
+OP_0NOTEQUAL
+OP_DUP
+OP_TOALTSTACK
+OP_ADD
+OP_NUMEQUALVERIFY
+OP_FROMALTSTACK
+```
+
+## OP_DIV2
+Integer division by 2 implemented with a _"hint"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
+
+```
+<X>
+<X DIV 2>
+OP_DUP
+OP_ADD
+123456
+OP_SWAP
+OP_SUB
+0
+2
+OP_WITHIN
+OP_VERIFY
+```
+
+We can use our OP_MUL implementations to generalise this for other divisors than 2.
+
+
+## Boolean Operators
+
+### OP_BOOLXOR
+Computes the logical XOR of the top two stack items.
+
+```
+OP_2DUP
+
+OP_NOT
+OP_BOOLAND
+
+OP_TOALTSTACK
+
+OP_SWAP
+OP_NOT
+OP_BOOLAND
+
+OP_FROMALTSTACK
+
+OP_BOOLOR
+```
+
+### OP_BOOLXOR Alternative (Credits: Brill Saton)
+```
+OP_NUMNOTEQUAL
+```
+
+Note: It might actually produce a valid result if the user supplies inputs other than 0 or 1, as long as their inputs are still numbers. So sanitizing inputs here is extra important, otherwise users might lose money by putting bad inputs into the transaction, which still executes, and results in a successful transaction where it really should have failed.
+
+### OP_BOOLXNOR
+```
+OP_NUMEQUAL
+```
+
+
 
 ## OP_LSHIFT
 Shift all bits of a number one bit to the left.
@@ -150,74 +220,6 @@ OP_EQUAL
 
 ```
 
-## OP_MOD2
-Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
-
-```
-<X>
-<X DIV 2>
-<X MOD 2>
-OP_0NOTEQUAL
-OP_DUP
-OP_TOALTSTACK
-OP_ADD
-OP_NUMEQUALVERIFY
-OP_FROMALTSTACK
-```
-
-## OP_DIV2
-Integer division by 2 implemented with a _"hint"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
-
-```
-<X>
-<X DIV 2>
-OP_DUP
-OP_ADD
-123456
-OP_SWAP
-OP_SUB
-0
-2
-OP_WITHIN
-OP_VERIFY
-```
-
-We can use our OP_MUL implementations to generalise this for other divisors than 2.
-
-
-## Boolean Operators
-
-### OP_BOOLXOR
-Computes the logical XOR of the top two stack items.
-
-```
-OP_2DUP
-
-OP_NOT
-OP_BOOLAND
-
-OP_TOALTSTACK
-
-OP_SWAP
-OP_NOT
-OP_BOOLAND
-
-OP_FROMALTSTACK
-
-OP_BOOLOR
-```
-
-### OP_BOOLXOR Alternative (Credits: Brill Saton)
-```
-OP_NUMNOTEQUAL
-```
-
-Note: It might actually produce a valid result if the user supplies inputs other than 0 or 1, as long as their inputs are still numbers. So sanitizing inputs here is extra important, otherwise users might lose money by putting bad inputs into the transaction, which still executes, and results in a successful transaction where it really should have failed.
-
-### OP_BOOLXNOR
-```
-OP_NUMEQUAL
-```
 
 
 ### Sanitise a Boolean Value
