@@ -67,6 +67,7 @@ OP_ADD
 OP_ADD
 ```
 
+## OP_MOD and OP_DIV
 
 ### OP_MOD2
 Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
