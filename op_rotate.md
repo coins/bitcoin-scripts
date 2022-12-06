@@ -22,7 +22,7 @@ OP_IF
 	# So we simply return the byte string of negative zero here
 	OP_DROP
 	OP_DROP
-	0000000080
+	0000000080			# We return here
 
 OP_ELSE
 	# This is not the number that maps to negative zero
@@ -37,7 +37,7 @@ OP_ELSE
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
 		OP_DROP
-		00000010
+		00000010		# We return here
 
 	OP_ELSE
 
@@ -149,13 +149,13 @@ OP_ELSE
 OP_ENDIF
 
 # ]" 0x11111101 0x88888888
+
 ```
 
 Inputs: 
 - `<X>`, the value to shift. In our example `0x88888888`. The script produces the result `0x11111111`
 - `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8. In our example `0x11111101`. This hint allows us to apply the principle "Don't compute. Verify."
 
-Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`.
-The negative zero, `0x80`, is encoded as `0x0000000080`
+Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`. But the negative zero, `0x80`, is encoded as `0x0000000080`
 
 The script here rotates three bits to the right. It can easily be modified to perform any other bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script 118 instructions.
