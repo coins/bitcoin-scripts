@@ -67,111 +67,6 @@ OP_ADD
 OP_ADD
 ```
 
-## Boolean Operators
-
-### OP_BOOLXOR
-Computes the logical XOR of the top two stack items.
-
-```
-OP_2DUP
-
-OP_NOT
-OP_BOOLAND
-
-OP_TOALTSTACK
-
-OP_SWAP
-OP_NOT
-OP_BOOLAND
-
-OP_FROMALTSTACK
-
-OP_BOOLOR
-```
-
-### OP_BOOLXOR Alternative (Credits: Brill Saton)
-```
-OP_NUMNOTEQUAL
-```
-
-Note: It might actually produce a valid result if the user supplies inputs other than 0 or 1, as long as their inputs are still numbers. So sanitizing inputs here is extra important, otherwise users might lose money by putting bad inputs into the transaction, which still executes, and results in a successful transaction where it really should have failed.
-
-### OP_BOOLXNOR
-```
-OP_NUMEQUAL
-```
-
-
-### Sanitise a Boolean Value
-Ensure a given value is either 0 or 1:
-
-```
-OP_DUP 
-OP_SIZE 
-OP_EQUALVERIFY
-```
-
-
-## Signatures
-
- 
-### OP_IFSIGSIZE
-
-Controlling the program flow via signature length.
-
-```
-OP_DUP
-OP_TOALTSTACK
-OP_CHECKSIGVERIFY
-OP_FROMALTSTACK
-OP_SIZE
-OP_TOALTSTACK
-OP_DROP
-
-OP_FROMALTSTACK
-OP_DUP
-OP_TOALTSTACK
-OP1
-OP_EQUAL
-OP_IF
-	< CASE 1 >
-OP_ENDIF
-
-OP_FROMALTSTACK
-OP_DUP
-OP_TOALTSTACK
-OP2
-OP_EQUAL
-OP_IF
-	< CASE 2 >
-OP_ENDIF
-	
-...
-```
-
-### OP_SIGCOMMITMENT
-Checks a hash commitment to a signature.
-
-```
-OP_DUP
-OP_TOALTSTACK
-OP_SHA256
-<commitment>
-OP_VERIFY
-```
-A signature can't sign itself. Thus, a signature commitment is possible only if the input is not signed. Currently the only way not to sign the input is by misusing `SIGHASH_SINGLE` to use hash `0000...0001` as [discussed here](https://bitcointalk.org/index.php?topic=260595.0). This is not very powerful. Signing the "hash" 0000...0001 is effectively giving away your private key because one could reuse that signature on any of your UTXOs.
-
- Yet, in future Bitcoin versions with `SIGHASH_NOINPUTS` this opcode enables covenants. We can link transactions with a 2-of-2 MultiSig:
-
-- The first signature pre-commits to the follow-up transaction with `OP_SIGCOMMITMENT` and `SIGHASH_NOINPUTS`
-- The second is a regular signature authorizing the transaction for execution 
-
-## Non-Malleable Bit Commitment 
-The following scripts ensures an input is either exactly `1` or `0`, represented unambiguously as `01` or `0x` respectively. Any other variations of `1` or `0` results in an error.
-```
-OP_DUP OP_SIZE OP_EQUALVERIFY
-```
-This prevents malleability of script inputs.
 
 
 ## OP_LSHIFT
@@ -288,6 +183,113 @@ OP_VERIFY
 ```
 
 We can use our OP_MUL implementations to generalise this for other divisors than 2.
+
+
+## Boolean Operators
+
+### OP_BOOLXOR
+Computes the logical XOR of the top two stack items.
+
+```
+OP_2DUP
+
+OP_NOT
+OP_BOOLAND
+
+OP_TOALTSTACK
+
+OP_SWAP
+OP_NOT
+OP_BOOLAND
+
+OP_FROMALTSTACK
+
+OP_BOOLOR
+```
+
+### OP_BOOLXOR Alternative (Credits: Brill Saton)
+```
+OP_NUMNOTEQUAL
+```
+
+Note: It might actually produce a valid result if the user supplies inputs other than 0 or 1, as long as their inputs are still numbers. So sanitizing inputs here is extra important, otherwise users might lose money by putting bad inputs into the transaction, which still executes, and results in a successful transaction where it really should have failed.
+
+### OP_BOOLXNOR
+```
+OP_NUMEQUAL
+```
+
+
+### Sanitise a Boolean Value
+Ensure a given value is either 0 or 1:
+
+```
+OP_DUP 
+OP_SIZE 
+OP_EQUALVERIFY
+```
+
+
+## Signatures
+
+ 
+### OP_IFSIGSIZE
+
+Controlling the program flow via signature length.
+
+```
+OP_DUP
+OP_TOALTSTACK
+OP_CHECKSIGVERIFY
+OP_FROMALTSTACK
+OP_SIZE
+OP_TOALTSTACK
+OP_DROP
+
+OP_FROMALTSTACK
+OP_DUP
+OP_TOALTSTACK
+OP1
+OP_EQUAL
+OP_IF
+	< CASE 1 >
+OP_ENDIF
+
+OP_FROMALTSTACK
+OP_DUP
+OP_TOALTSTACK
+OP2
+OP_EQUAL
+OP_IF
+	< CASE 2 >
+OP_ENDIF
+	
+...
+```
+
+### OP_SIGCOMMITMENT
+Checks a hash commitment to a signature.
+
+```
+OP_DUP
+OP_TOALTSTACK
+OP_SHA256
+<commitment>
+OP_VERIFY
+```
+A signature can't sign itself. Thus, a signature commitment is possible only if the input is not signed. Currently the only way not to sign the input is by misusing `SIGHASH_SINGLE` to use hash `0000...0001` as [discussed here](https://bitcointalk.org/index.php?topic=260595.0). This is not very powerful. Signing the "hash" 0000...0001 is effectively giving away your private key because one could reuse that signature on any of your UTXOs.
+
+ Yet, in future Bitcoin versions with `SIGHASH_NOINPUTS` this opcode enables covenants. We can link transactions with a 2-of-2 MultiSig:
+
+- The first signature pre-commits to the follow-up transaction with `OP_SIGCOMMITMENT` and `SIGHASH_NOINPUTS`
+- The second is a regular signature authorizing the transaction for execution 
+
+## Non-Malleable Bit Commitment 
+The following scripts ensures an input is either exactly `1` or `0`, represented unambiguously as `01` or `0x` respectively. Any other variations of `1` or `0` results in an error.
+```
+OP_DUP OP_SIZE OP_EQUALVERIFY
+```
+This prevents malleability of script inputs.
 
 ## Script Limits
 
