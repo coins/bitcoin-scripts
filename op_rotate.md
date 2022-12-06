@@ -69,10 +69,10 @@ OP_ELSE
 		#
 
 		# We compute the result with the help of a hint.
-		# We expect the hint div(value, 8) 
+		# We expect the hint to be hint == value // 8
 		# and the following verifies its correctness
 
-		#  Copy the hint and multiply by it 8
+		#  Copy the hint and multiply it by 8
 		OP_DUP
 		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
 
