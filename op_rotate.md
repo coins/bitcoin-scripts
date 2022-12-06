@@ -55,7 +55,7 @@ OP_ELSE
 
 		# The sign rotated becomes the bit at index 31-3 = 28
 		OP_IF
-			268435456  # 2^28
+			268435456  # This is 2^28
 		OP_ELSE
 			0
 		OP_ENDIF
@@ -64,20 +64,22 @@ OP_ELSE
 
 		
 		#
-		# Compute div_rem of the value divided by 8
-		# it puts both the quotient and the remainder on the stack.
+		# Simultaneous integer division and modulus
+		#
+		# Computes div_rem of the value divided by 8 == 2^3
+		# It puts both the quotient and the remainder on the stack
 		#
 
 		# We compute the result with the help of a "hint" 
 		# provided by the unlocking script.
 		# We expect the hint to be hint == value // 8
-		# and the following verifies that it is acutally correct.
+		# and the following verifies that it is acutally correct:
 
-		#  Copy the hint and multiply it by 8
+		# Copy the hint and multiply it by 8
 		OP_DUP
 		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
 
-		# Subtract it from the value and ensure
+		# Subtract that from the original value and ensure
 		# the remainder is a number in [0,1,2,...,7]
 		OP_ROT
 		OP_SWAP
@@ -88,18 +90,31 @@ OP_ELSE
 		OP_WITHIN
 		OP_VERIFY
 
-		# Cut off the highest bit of the remainder because this we be our new sign 2**(3-1) 
+		# Now remainder and quotient is on the stack
+
+
+		#
+		# Most of the following code is juggeling around bits
+		# to deal with the sign of our result
+		#
+
+		
+		# Cut off the highest bit of the remainder because this will be our new sign 
+		# The remainder has 3 bits. So the highest bit is 4 = 2**(3-1)
+		# Store the 
+
 		OP_DUP
-		# 2**(3-1) 
-		4
+		4   # The highest bit of the remainder
 		OP_GREATERTHANOREQUAL
 		OP_IF
+			# The bit is set. So cut it off
 			4
 			OP_SUB
-			1
+			1 	# The new sign
 		OP_ELSE
-			0
+			0 	# The new sign
 		OP_ENDIF
+		# Push the new sign in the altstack for later
 		OP_TOALTSTACK
 
 
@@ -122,7 +137,7 @@ OP_ELSE
 		OP_ADD
 
 
-		# Adjust the sign
+		# Adjust the new sign
 		OP_FROMALTSTACK
 		OP_IF
 			OP_NEGATE
@@ -144,4 +159,4 @@ Inputs:
 Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`.
 The negative zero, `0x80`, is encoded as `0x0000000080`
 
-The script here rotates three bits to the right. It can easily be modified to perform any other bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script a bit more than 100 instructions.
+The script here rotates three bits to the right. It can easily be modified to perform any other bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script 118 instructions.
