@@ -85,7 +85,7 @@ OP_FROMALTSTACK
 ```
 
 ### OP_DIV2
-Integer division by 2 implemented with a _"hint"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
+Integer division by 2 implemented with a _"hint"_. That means the result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
 <HINT: X DIV 2>
