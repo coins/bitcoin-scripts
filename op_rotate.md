@@ -79,7 +79,7 @@ OP_ELSE
 
 
 		OP_DUP
-		# Cut of the highest bit of the reminder because this we be our new sign 2**(3-1) 
+		# Cut off the highest bit of the remainder because this we be our new sign 2**(3-1) 
 		4
 		OP_GREATERTHANOREQUAL
 		OP_IF
@@ -92,7 +92,7 @@ OP_ELSE
 		OP_TOALTSTACK
 
 
-		# Shift the reminder 29 bits to the left
+		# Shift the remainder 29 bits to the left
 		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
 		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
 
@@ -122,6 +122,6 @@ OP_ENDIF
 
 # ]" 0x11111101 0x04
 
-# Inputs: <Hint: X div 8> <X>
+# Inputs: <Hint: div(abs(X),8)> <X>
 # Inputs have to be minimally encoded. E.g., 0x04000000 -> 0x04
 ```
