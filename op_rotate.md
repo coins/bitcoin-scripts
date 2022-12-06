@@ -68,9 +68,10 @@ OP_ELSE
 		# it puts both the quotient and the remainder on the stack.
 		#
 
-		# We compute the result with the help of a hint.
+		# We compute the result with the help of a "hint" 
+		# provided by the unlocking script.
 		# We expect the hint to be hint == value // 8
-		# and the following verifies its correctness
+		# and the following verifies that it is acutally correct.
 
 		#  Copy the hint and multiply it by 8
 		OP_DUP
@@ -137,8 +138,8 @@ OP_ENDIF
 ```
 
 Inputs: 
-- `<X>`, the value to shift. In our example `0x88888888`. The result is `0x11111111`.
-- `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8. This is a "hint", that allows us to apply the principle "Don't compute. Verify."
+- `<X>`, the value to shift. In our example `0x88888888`. The script produces the result `0x11111111`
+- `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8. This hint allows us to apply the principle "Don't compute. Verify."
 
 Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`.
 The negative zero, `0x80`, is encoded as `0x0000000080`
