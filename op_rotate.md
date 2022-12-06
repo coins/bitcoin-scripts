@@ -146,3 +146,4 @@ Inputs:
 Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`.
 The negative zero, `0x80`, is encoded as `0x0000000080`
 
+The script here rotates three bits. It can be easily adjusted to rotate any other number of bits. All rotations require the same amount of instructions.
