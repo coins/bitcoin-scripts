@@ -159,9 +159,19 @@ Note: It might actually produce a valid result if the user supplies inputs other
 OP_NUMEQUAL
 ```
 
+### Sanitise a Boolean Value
+Ensure a given value is either 0 or 1:
+
+```
+OP_DUP 
+OP_SIZE 
+OP_EQUALVERIFY
+```
 
 
-## OP_LSHIFT
+## Bitwise Operators
+
+### OP_LSHIFT
 Shift all bits of a number one bit to the left.
 
 ```
@@ -182,7 +192,7 @@ OP_ELSE
 OP_ENDIF
 ```
 
-## Verify the Binary Representation of a Number
+### Verify the Binary Representation of a Number
 
 ```
 btcdeb "[
@@ -240,17 +250,6 @@ OP_EQUAL
 
 # ]" 1 0 0 1 0 0 1 1
 
-```
-
-
-
-### Sanitise a Boolean Value
-Ensure a given value is either 0 or 1:
-
-```
-OP_DUP 
-OP_SIZE 
-OP_EQUALVERIFY
 ```
 
 
