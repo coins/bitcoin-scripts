@@ -195,6 +195,66 @@ OP_ELSE
 OP_ENDIF
 ```
 
+## Verify the Binary Representation of a Number
+
+```
+btcdeb "[
+0
+OP_SWAP	
+OP_IF
+	1
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	2
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	4
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	8
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	16
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	32
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	64
+	OP_ADD
+OP_ENDIF
+
+OP_SWAP	
+OP_IF
+	128
+	OP_ADD
+OP_ENDIF
+
+147
+OP_EQUAL
+
+# ]" 1 0 0 1 0 0 1 1
+
+```
+
 
 ## Script Limits
 
