@@ -125,6 +125,26 @@ btcdeb "[
 
 Here we use `OP_MUL8 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD`, which is easy to generalise for other divisors.
 
+### OP_DIV_REM_8
+
+We can easily modify the above implementation to return both the result of the integer devision _and_ the remainder.
+```
+btcdeb "[
+
+	OP_DUP
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
+	123459
+	OP_SWAP
+	OP_SUB
+	OP_DUP
+	0
+	8
+	OP_WITHIN
+	OP_VERIFY
+
+# ]" 15432
+```
+
 
 ## Boolean Operators
 
