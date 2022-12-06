@@ -7,15 +7,16 @@ Compiling the script "by hand" to include `00000080` would probably solve the is
 btcdeb "[
 	
 # Check if this is the input that returns a negative zero
+# We cannot compute negative zero with arithmetic opcodes
 # To work around Bitcoin's quirky arithmetic
-# we simply return a constant byte string in this case
+# we simply return a constant in this case
 OP_DUP
 0x04
 OP_EQUAL
 OP_IF
 
-	# This is the input that returns negative zero	
-	# So, we return the byte string that represents negative zero
+	# This is the input that maps to negative zero	
+	# So we simply return the byte string of negative zero here
 	OP_DROP
 	OP_DROP
 	00000080
@@ -29,18 +30,17 @@ OP_ELSE
 	OP_EQUAL
 	OP_IF
 		
-		# The input was a negative zero
-		# We also handle this case separately with a constant
-		# which is the negative zero rotated by 3 bits
+		# The input it the negative zero. This case is handled by a constant, too.
+		# We return the negative zero rotated by 3 bits
 		OP_DROP
 		00000010
 
 	OP_ELSE
+
 		# This is a normal input, so we apply our algorithm
 
 		
 		##################################################################
-
 
 
 		# Split the input into its sign and the 31-bit value
@@ -117,6 +117,6 @@ OP_ENDIF
 
 # ]" 0x11111101 0x04
 
-# Inputs: <Hint(X div 8)> <X>
+# Inputs: <Hint: X div 8> <X>
 # Inputs have to be minimally encoded. E.g., 0x04000000 -> 0x04
 ```
