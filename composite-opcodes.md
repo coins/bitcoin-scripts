@@ -320,7 +320,10 @@ This prevents malleability of script inputs.
 - [Maximum number of op_codes in script](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
 - [520-byte limitation on serialized script size](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki#520-byte-limitation-on-serialized-script-size)
 - max push is 520 bytes
+- In Taproot Script many of these [limitations have been removed](https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki#Resource_limits)
 - There is positive zero `0x` and negative zero `0x80`. Both can have trailing zeros i.e `0x0080`. There are 1041 different encodings for False.
+
+
 
 ## See Also 
 
