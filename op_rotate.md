@@ -1,5 +1,8 @@
 # Rotate a 32-bit number 3 bits to the right
 
+WARNING: This script doesn't work yet because btcdeb keeps replacing the negative zero `00000080` with the positive zero `0`.
+Compiling the script "by hand" to include `00000080` would probably solve the issue.
+
 ```
 btcdeb "[
 	
