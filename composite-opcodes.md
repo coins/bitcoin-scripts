@@ -107,6 +107,7 @@ We can use our OP_MUL implementations to generalise this for other divisors than
 
 This is an integer division by `8`. The number `123459` is divided `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently.
 
+
 ```
 btcdeb "[
 	OP_DUP
@@ -121,7 +122,7 @@ btcdeb "[
 # ]" 15432
 ```
 
-
+Here we use `OP_MUL8 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD`, which is easy to generalise for other divisors.
 
 
 ## Boolean Operators
