@@ -105,7 +105,7 @@ We can use our OP_MUL implementations to generalise this for other divisors than
 
 ## OP_DIV8
 
-This is an integer division by `8`. The number `123459` is divided by `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently.
+This is an integer division by `8`. The number `123459` is divided by `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently than calculating it ourselves.
 
 
 ```
