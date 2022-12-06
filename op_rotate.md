@@ -145,4 +145,4 @@ Inputs:
 Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`.
 The negative zero, `0x80`, is encoded as `0x0000000080`
 
-The script here rotates three bits to the right. It can be easily perform any bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script a bit more than 100 instructions.
+The script here rotates three bits to the right. It can easily be modified to perform any other bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script a bit more than 100 instructions.
