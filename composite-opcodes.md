@@ -73,8 +73,8 @@ Modulo 2 implemented with _"hints"_. The result of the operation is given to us 
 
 ```
 <X>
-<X DIV 2>
-<X MOD 2>
+<HINT: X DIV 2>
+<HINT: X MOD 2>
 OP_0NOTEQUAL
 OP_DUP
 OP_TOALTSTACK
@@ -87,11 +87,11 @@ OP_FROMALTSTACK
 Integer division by 2 implemented with a _"hint"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
-<X>
-<X DIV 2>
+<HINT: X DIV 2>
+OP_DUP
 OP_DUP
 OP_ADD
-123456
+<X>
 OP_SWAP
 OP_SUB
 0
