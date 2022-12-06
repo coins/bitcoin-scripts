@@ -22,9 +22,9 @@ OP_IF
 	00000080
 
 OP_ELSE
-	# This is not the input that returns negative zero
+	# This is not the input that maps to negative zero
 
-	# Check if the input is the negative zero 00000080
+	# Now, check if the input itself is the negative zero 00000080
 	OP_DUP
 	00000080
 	OP_EQUAL
