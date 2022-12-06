@@ -13,12 +13,11 @@ btcdeb "[
 # we simply return a constant in these cases
 #
 
-# Check if this is the number that maps to negative zero when shifted 3 bits to the right
+# Check if the input is the number that maps to negative zero when shifted 3 bits to the right
 OP_DUP
 0x04
 OP_EQUAL
 OP_IF
-
 	# This is the number that maps to negative zero	
 	# So we simply return the byte string of negative zero here
 	OP_DROP
@@ -56,8 +55,7 @@ OP_ELSE
 
 		# The sign rotated becomes the bit at index 31-3 = 28
 		OP_IF
-			# 2^( 31 - 3 )
-			268435456
+			268435456  # 2^28
 		OP_ELSE
 			0
 		OP_ENDIF
