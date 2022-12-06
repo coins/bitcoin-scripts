@@ -175,8 +175,10 @@ This prevents malleability of script inputs.
 
 
 ## OP_LSHIFT
+Shift all bits of a number one bit to the left.
 
 ```
+<number>
 OP_ABS
 OP_DUP
 ffffff3f
