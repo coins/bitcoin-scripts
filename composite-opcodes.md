@@ -8,34 +8,34 @@ We can define custom opcodes by chaining existing opcodes.
 
 You can find a [full implementation of `OP_MUL` here](op_mul.md).
 
-### OP_MUL2
+### OP_2MUL
 Multiplies the top stack item by 2.
 ```
 OP_DUP OP_ADD
 ```
 
-### OP_MUL4
+### OP_4MUL
 Multiplies the top stack item by 4.
 ```
-  OP_MUL2 OP_MUL2
+  OP_2MUL OP_2MUL
 = OP_DUP OP_ADD OP_DUP OP_ADD
 ```
 
-### OP_MUL8
+### OP_8MUL
 Multiplies the top stack item by 8.
 ```
-  OP_MUL4 OP_MUL2
+  OP_4MUL OP_2MUL
 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ```
 
 ...
 
-### OP_MUL5
+### OP_5MUL
 Multiplies the top stack item by 5.
 ```
 OP_DUP
 OP_TOALTSTACK
-OP_MUL4
+OP_4MUL
 
 OP_FROMALTSTACK
 OP_DUP
@@ -44,19 +44,19 @@ OP_TOALTSTACK
 OP_ADD
 ```
 
-### OP_MUL13
+### OP_13MUL
 Multiplies the top stack item by 13.
 ```
 OP_DUP
 OP_TOALTSTACK
 
-OP_MUL8
+OP_8MUL
 
 OP_FROMALTSTACK
 OP_DUP
 OP_TOALTSTACK
 
-OP_MUL4
+OP_4MUL
 
 OP_FROMALTSTACK
 OP_DUP
@@ -69,7 +69,7 @@ OP_ADD
 
 ## OP_MOD and OP_DIV
 
-### OP_MOD2
+### OP_2MOD
 Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
@@ -84,7 +84,7 @@ OP_NUMEQUALVERIFY
 OP_FROMALTSTACK
 ```
 
-### OP_DIV2
+### OP_2DIV
 Integer division by 2 implemented with a _"hint"_. That means the result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
@@ -104,7 +104,7 @@ OP_VERIFY
 We can use our OP_MUL implementations to generalise this for other divisors than 2.
 
 
-### OP_DIV8
+### OP_8DIV
 
 This is an integer division by `8`. The number `123459` is divided by `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently than calculating it ourselves.
 
@@ -123,9 +123,9 @@ btcdeb "[
 # ]" 15432
 ```
 
-Here we use `OP_MUL8 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD`, which is easy to generalise for other divisors.
+Here we use `OP_8MUL = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD`, which is easy to generalise for other divisors.
 
-### OP_DIV_REM_8
+### OP_8DIV_REM
 
 We can easily modify the above implementation to return both the result of the integer devision _and_ the remainder.
 ```
@@ -220,7 +220,7 @@ Here is an example of using `op_div_rem_8` to rotate all bits three bits to the 
 Described in simplified pseudo code:
 ```
 <X>
-OP_DIV_REM_8
+OP_8DIV_REM
 OP_MUL( 2^21 )
 OP_ADD
 ```
