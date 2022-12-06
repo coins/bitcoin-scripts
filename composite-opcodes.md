@@ -213,6 +213,38 @@ OP_ELSE
 OP_ENDIF
 ```
 
+### Left rotate 3 bits
+
+Here is an example of using `op_div_rem_8` to rotate all bits three bits to the left. For simplification the rotation is performed over 24 bit words such that we do not have to deal with the sign of the signed 32 bit words used by Bitcoin Script.
+
+```
+btcdeb "[
+
+	OP_DUP
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
+	12345
+	OP_SWAP
+	OP_SUB
+	OP_DUP
+	0
+	8
+	OP_WITHIN
+	OP_VERIFY
+
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD 
+
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  
+
+	OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD  
+	OP_DUP OP_ADD
+
+
+	OP_ADD
+# ]" 1543
+```
+
 ### Verify the Binary Representation of a Number
 
 ```
