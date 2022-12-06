@@ -173,6 +173,27 @@ OP_DUP OP_SIZE OP_EQUALVERIFY
 ```
 This prevents malleability of script inputs.
 
+
+## OP_LSHIFT
+
+```
+OP_ABS
+OP_DUP
+ffffff3f
+OP_GREATERTHAN
+OP_IF
+    00000040
+    OP_SUB
+    OP_DUP
+    OP_ADD
+    OP_NEGATE
+OP_ELSE
+    OP_DUP
+    OP_ADD
+OP_ENDIF
+```
+
+
 ## Script Limits
 
 - [Maximum number of op_codes in script](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
