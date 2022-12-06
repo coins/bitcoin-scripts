@@ -6,7 +6,7 @@ Compiling the script "by hand" to include `00000080` would probably solve the is
 ```
 btcdeb "[
 	
-# Check if this is the input that returns a negative zero
+# Check if this is the input that maps to negative zero 00000080
 # We cannot compute negative zero with arithmetic opcodes
 # To work around Bitcoin's quirky arithmetic
 # we simply return a constant in this case
@@ -24,7 +24,7 @@ OP_IF
 OP_ELSE
 	# This is not the input that maps to negative zero
 
-	# Now, check if the input itself is the negative zero 00000080
+	# Now, check if the input itself is the negative zero
 	OP_DUP
 	00000080
 	OP_EQUAL
