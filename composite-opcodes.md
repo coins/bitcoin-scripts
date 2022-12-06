@@ -270,6 +270,25 @@ OP_NUMEQUALVERIFY
 OP_FROMALTSTACK
 ```
 
+## OP_DIV2
+Modulo 2 implemented with a _"hint"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
+
+```
+<X>
+<X DIV 2>
+OP_DUP
+OP_ADD
+123456
+OP_SWAP
+OP_SUB
+0
+2
+OP_WITHIN
+OP_VERIFY
+```
+
+We can use our OP_MUL implementations to generalise this for other divisors than 2.
+
 ## Script Limits
 
 - [Maximum number of op_codes in script](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
