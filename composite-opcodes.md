@@ -256,7 +256,7 @@ OP_EQUAL
 ```
 
 ## OP_MOD2
-Modulo 2 implementend with _"hints"_. So the result of the operation is given to us in the unlocking script and we only _verify_ the result of the operation. This is more efficient than computing the result ourselves. 
+Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
 <X>
