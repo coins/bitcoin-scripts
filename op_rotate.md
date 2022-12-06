@@ -15,7 +15,7 @@ OP_IF
 	# So, we return the byte string that represents negative zero
 	OP_DROP
 	OP_DROP
-	[0x0180]
+	00000080
 
 OP_ELSE
 	# This is not the input that returns negative zero
