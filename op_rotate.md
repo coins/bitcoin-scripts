@@ -8,7 +8,7 @@ btcdeb "[
 
 # 
 # We have to start with a bit of gymnastics here
-# to deal with the negative zero 0x80 and that it 
+# to deal with the negative zero `0x80` and that it 
 # cannot be the result of arithmetic opcodes.
 # To work around Bitcoin's quirky arithmetic
 # we simply return a constant in these cases
@@ -23,21 +23,21 @@ OP_IF
 	# So we simply return the byte string of negative zero here
 	OP_DROP
 	OP_DROP
-	OP_x0400000080		# This is our "return statement"
+	0x80			# This is our "return statement"
 
 OP_ELSE
 	# This is not the number that maps to negative zero
 
 	# Check if the number itself is the negative zero
 	OP_DUP
-	OP_x0400000080
+	0x08
 	OP_EQUAL
 	OP_IF
 		
 		# This number is the negative zero. This case is handled by a constant, too.
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
-		00000010	# This is our "return statement"
+		0x10		# This is our "return statement"
 
 	OP_ELSE
 
