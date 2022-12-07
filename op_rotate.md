@@ -13,7 +13,7 @@ btcdeb "[
 # we simply return a constant in these cases
 #
 
-# Check if the input is the number that maps to negative zero when shifted by 3 bits to the right
+# Check if the input is the number that maps to negative zero when shifted 3 bits to the right
 OP_DUP
 0x04
 OP_EQUAL
@@ -22,14 +22,14 @@ OP_IF
 	# So we simply return the byte string of negative zero here
 	OP_DROP
 	OP_DROP
-	0000000080			# We return here
+	OP_x01 [0x80]			# We return here the negative zero
 
 OP_ELSE
 	# This is not the number that maps to negative zero
 
 	# Check if the number itself is the negative zero
 	OP_DUP
-	0000000080
+	OP_x01 [0x80]			# This is the negative zero
 	OP_EQUAL
 	OP_IF
 		
@@ -37,7 +37,7 @@ OP_ELSE
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
 		OP_DROP
-		00000010		# We return here
+		00000010		# We return here the rotated negative zero 
 
 	OP_ELSE
 
@@ -150,12 +150,13 @@ OP_ENDIF
 
 # ]" 0x11111101 0x88888888
 
+
 ```
 
 Inputs: 
 - `<X>`, the value to shift. In our example `0x88888888`. The script produces the result `0x11111111`
 - `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8. In our example `0x11111101`. This hint allows us to apply the principle "Don't compute. Verify."
 
-Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`. But the negative zero, `0x80`, is encoded as `0x0000000080`
+Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`. But the negative zero, `0x80`, is encoded as `0x00`
 
 The script here rotates three bits to the right. It can easily be modified to perform any other bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script 118 instructions.
