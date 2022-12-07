@@ -1,4 +1,4 @@
-# Composite OP_CODES
+# Composite Opcodes
 
 We can define custom opcodes by chaining existing opcodes. 
 
