@@ -34,13 +34,7 @@ Multiplies the top stack item by 8.
 Multiplies the top stack item by 5.
 ```
 OP_DUP
-OP_TOALTSTACK
 OP_4MUL
-
-OP_FROMALTSTACK
-OP_DUP
-OP_TOALTSTACK
-
 OP_ADD
 ```
 
