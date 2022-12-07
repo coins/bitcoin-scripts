@@ -420,6 +420,7 @@ OP_CHECKLOCKTIMEVERIFY
 # ]" 700123
 ```
 
+The same technique applies to get a minimum network time. Furthermore, it can be applied to `OP_CHECKSEQUENCEVERIFY` to get a minimum age of the output spent in the TX.
 
 ## Script Limits
 
