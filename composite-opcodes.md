@@ -283,6 +283,9 @@ btcdeb "[
 
 Here you can find a [full implementation of a bitwise rotation of a 32-bit word](op_rotate.md). 
 
+### Right rotate 
+
+A right rotation by `k` bits can be performed with an integer divisions by `2^k`. To verify the according hint we require `k` many `OP_2MOD`.
 
 
 ### Verify the Binary Representation of a Number
