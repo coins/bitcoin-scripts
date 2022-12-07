@@ -200,7 +200,7 @@ OP_ELSE
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
 		OP_DROP
-		00000010		# We return here the rotated negative zero 
+		00000010			# We return here the rotated negative zero 
 
 	OP_ELSE
 
@@ -242,7 +242,7 @@ OP_ELSE
 		OP_DUP
 		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
 
-		# Subtract that from the original value and ensure
+		# Subtract the result from the original value and ensure
 		# the remainder is a number in [0,1,2,...,7]
 		OP_ROT
 		OP_SWAP
@@ -289,14 +289,14 @@ OP_ELSE
 		#
 
 		OP_DUP
-		OP_IF
+		OP_IF 					# Otherwise, we return 0 * 2^29
 			# The unsigned remainder was not zero, so we have to add more than a zero
 			OP_DUP
 			1
 			OP_EQUAL
 			OP_IF
 				OP_DROP
-				00000020 		# this is 2^29
+				00000020 		# This is 1 * 2^29
 			OP_ELSE
 				2
 				OP_EQUAL
