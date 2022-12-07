@@ -180,14 +180,16 @@ Note: It might actually produce a valid result if the user supplies inputs other
 OP_NUMEQUAL
 ```
 
-### Sanitise a Boolean Value
-Ensure a given value is either 0 or 1:
+### Non-Malleable Boolean value
+The following scripts ensures an input is either exactly `1` or `0`, represented unambiguously as `01` or `0x` respectively. Any other variations of `1` or `0` results in an error.
 
 ```
 OP_DUP 
 OP_SIZE 
 OP_EQUALVERIFY
 ```
+
+This prevents malleability of script inputs.
 
 
 ## Bitwise Operators
@@ -403,12 +405,6 @@ A signature can't sign itself. Thus, a signature commitment is possible only if 
 - The first signature pre-commits to the follow-up transaction with `OP_SIGCOMMITMENT` and `SIGHASH_NOINPUTS`
 - The second is a regular signature authorizing the transaction for execution 
 
-## Non-Malleable Bit Commitment 
-The following scripts ensures an input is either exactly `1` or `0`, represented unambiguously as `01` or `0x` respectively. Any other variations of `1` or `0` results in an error.
-```
-OP_DUP OP_SIZE OP_EQUALVERIFY
-```
-This prevents malleability of script inputs.
 
 
 ## Time and Block Height 
