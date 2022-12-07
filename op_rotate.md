@@ -164,7 +164,7 @@ The script here rotates three bits to the right. It can easily be modified to pe
 
 ## Optimization 
 
-The following implementation takes advantage of the special case of a rotation by 3 bits, which allows to hard code a 4 cases with a constant to save an expensive multiplication. This reduces the step count to 77 instructions.
+The following implementation takes advantage of the special case of a rotation by 3 bits, which allows to optimize by hard coding 4 cases with a constant to save an expensive multiplication. This reduces the step count to 78 instructions.
 
 ```
 btcdeb "[
