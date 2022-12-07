@@ -213,6 +213,32 @@ OP_ELSE
 OP_ENDIF
 ```
 
+### Bitwise Complement
+
+The following flips all bits of a 32-bit word.
+
+```
+btcdeb "[ 
+
+	OP_DUP
+	OP_ABS
+	OP_TUCK
+	OP_NUMNOTEQUAL
+
+	OP_SWAP
+
+	0xffffff7f
+	OP_SWAP
+	OP_SUB
+
+	OP_SWAP
+	OP_NOTIF
+		OP_NEGATE
+	OP_ENDIF
+
+# ]" 0xAAAAAAAA
+```
+
 ### Left rotate by 3 Bits
 
 Here is an example of using `op_div_rem_8` to rotate all bits three bits to the left. For simplification the rotation is performed over 24 bit words such that we do not have to deal with the sign of the signed 32 bit words used by Bitcoin Script.
