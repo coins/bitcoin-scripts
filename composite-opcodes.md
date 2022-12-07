@@ -410,6 +410,21 @@ OP_DUP OP_SIZE OP_EQUALVERIFY
 ```
 This prevents malleability of script inputs.
 
+
+## Time and Block Height 
+
+The following script proves that the block height is at least 700123
+
+```
+btcdeb "[
+
+OP_DUP 0065cd1d OP_LESSTHAN	# The input is a block height iff it is less than 500'000'000
+OP_CHECKLOCKTIMEVERIFY
+
+# ]" 700123
+```
+
+
 ## Script Limits
 
 - [Maximum number of op_codes in script](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
