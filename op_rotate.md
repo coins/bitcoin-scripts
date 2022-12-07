@@ -29,7 +29,7 @@ OP_ELSE
 
 	# Check if the number itself is the negative zero
 	OP_DUP
-	OP_x01 [0x80]			# This is the negative zero
+	OP_x01 [0x80]			# This pushes the negative zero onto the stack
 	OP_EQUAL
 	OP_IF
 		
@@ -37,7 +37,7 @@ OP_ELSE
 		# We return the negative zero rotated by 3 bits
 		OP_DROP
 		OP_DROP
-		00000010		# We return here the rotated negative zero 
+		00000010			# We return here the rotated negative zero 
 
 	OP_ELSE
 
@@ -79,7 +79,7 @@ OP_ELSE
 		OP_DUP
 		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD
 
-		# Subtract that from the original value and ensure
+		# Subtract the result from the original value and ensure
 		# the remainder is a number in [0,1,2,...,7]
 		OP_ROT
 		OP_SWAP
@@ -118,18 +118,32 @@ OP_ELSE
 		OP_TOALTSTACK
 
 
-		# Shift the remainder 32-3 = 29 bits to the left
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		# Shift the unsigned remainder 32-3 = 29 bits to the left
 
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		#
+		# The unsigned remainder has only 4 bits here, so we can handle all 4 cases with a constant
+		# instead of multiplying the remainder by 2^29
+		#
 
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
-
-		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
-		OP_DUP OP_ADD
+		OP_DUP
+		OP_IF 					# Otherwise, we return 0 * 2^29
+			# The unsigned remainder was not zero, so we have to add more than a zero
+			OP_DUP
+			1
+			OP_EQUAL
+			OP_IF
+				OP_DROP
+				00000020 		# This is 1 * 2^29
+			OP_ELSE
+				2
+				OP_EQUAL
+				OP_IF
+					00000040 	# This is 2 * 2^29
+				OP_ELSE
+					00000060 	# This is 3 * 2^29
+				OP_ENDIF
+			OP_ENDIF
+		OP_ENDIF
 
 		
 		# Now add up all three values
