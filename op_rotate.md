@@ -155,11 +155,15 @@ OP_ENDIF
 
 Inputs: 
 - `<X>`, the value to shift. In our example `0x88888888`. The script produces the result `0x11111111`
-- `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8. In our example `0x11111101`. This hint allows us to apply the principle "Don't compute. Verify."
+- `<Hint: div(abs(X),8)>`, the absolute value of `X` divided by 8. In our example `0x11111101`. This hint allows us to apply the principle "Don't compute. Verify." See [the Cairo WhitePaper](https://eprint.iacr.org/2021/1063.pdf) for an explanation of hints and nondeterminism.
 
 Inputs have to be minimally encoded. E.g.,`0x04000000 -> 0x04`. But the negative zero, `0x80`, is encoded as `0x00`
 
 The script here rotates three bits to the right. It can easily be modified to perform any other bitwise rotation. All rotations on 32-bit words require the same amount of instructions. In this script 118 instructions.
+
+## Nondeterministic 
+
+
 
 
 ## Optimization 
