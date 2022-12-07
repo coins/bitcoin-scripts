@@ -255,6 +255,10 @@ btcdeb "[
 # ]" 1543
 ```
 
+Here you can find a [full implementation of a bitwise rotation of a 32-bit word](op_rotate.md). 
+
+
+
 ### Verify the Binary Representation of a Number
 
 ```
