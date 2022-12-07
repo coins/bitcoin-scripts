@@ -1,6 +1,6 @@
 # Bitwise Rotation of a 32-bit Integer
 
-A Bitcoin Script implementing a bitwise rotation of a 32-bit word 3 bits to the right. 
+A Bitcoin Script implementing a bitwise rotation of a 32-bit word by 3 bits to the right. 
 
 ```
 btcdeb "[
@@ -13,7 +13,7 @@ btcdeb "[
 # we simply return a constant in these cases
 #
 
-# Check if the input is the number that maps to negative zero when shifted 3 bits to the right
+# Check if the input is the number that maps to negative zero when shifted by 3 bits to the right
 OP_DUP
 0x04
 OP_EQUAL
