@@ -31,7 +31,7 @@ Multiplies the top stack item by 8.
 ...
 
 ### OP_5MUL
-Multiplies the top stack item by 5.
+Multiplies the top stack item by 5. It uses that `x * 5 = x * 4 + x`
 ```
 OP_DUP
 OP_4MUL
