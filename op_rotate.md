@@ -120,31 +120,14 @@ OP_ELSE
 
 		# Shift the unsigned remainder 32-3 = 29 bits to the left
 
-		#
-		# The unsigned remainder has only 4 bits here, so we can handle all 4 cases with a constant
-		# instead of multiplying the remainder by 2^29
-		#
-
-		OP_DUP
-		OP_IF 					# Otherwise, we return 0 * 2^29
-			# The unsigned remainder was not zero, so we have to add more than a zero
-			OP_DUP
-			1
-			OP_EQUAL
-			OP_IF
-				OP_DROP
-				00000020 		# This is 1 * 2^29
-			OP_ELSE
-				2
-				OP_EQUAL
-				OP_IF
-					00000040 	# This is 2 * 2^29
-				OP_ELSE
-					00000060 	# This is 3 * 2^29
-				OP_ENDIF
-			OP_ENDIF
-		OP_ENDIF
-
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD  OP_DUP OP_ADD  OP_DUP OP_ADD OP_DUP OP_ADD
+		OP_DUP OP_ADD
 		
 		# Now add up all three values
 		OP_ADD 
