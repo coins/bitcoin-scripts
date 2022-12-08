@@ -98,15 +98,32 @@ We can use our OP_MUL implementations to generalise this for other divisors than
 Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
 ```
-<X>
-<HINT: X DIV 2>
-<HINT: X MOD 2>
-OP_0NOTEQUAL
-OP_DUP
-OP_TOALTSTACK
-OP_ADD
-OP_NUMEQUALVERIFY
-OP_FROMALTSTACK
+# Modulo 2 with the help of a hint
+#
+# In this example, we compute 119 mod 2.
+# In the unlocking script the prover provides the quotient
+# as a hint 119//2 = 59, which we verify.
+
+btcdeb "[ 
+
+  119             # Some arbitrary input is on the stack
+  OP_SWAP         # Swap the hint to the top of the stack
+
+  OP_DUP OP_ADD   # Multiply the hint by 2
+  OP_SUB          # Subtract that from the 119
+	              
+
+  # Now the remainder should be on the stack
+  # We verify that it is exactly 0 or 1
+              
+  OP_DUP OP_DUP   # Make two copies
+  OP_0NOTEQUAL    # Returns 0 if the input is 0. 1 otherwise.
+  OP_EQUALVERIFY
+
+  # We're done. The result is on the stack
+  
+
+# ]" 59           # The hint provided is 59 = 119/2
 ```
 
 
@@ -463,13 +480,12 @@ btcdeb "[
 	ENDIF
 
 
-	# Verify that the hin was correct
+	# Verify that the hint was correct
 	FROMALTSTACK
 	EQUALVERIFY
 
 
-	# Now the corresponding element is on the top stack
-
+	# We're done. The corresponding element is on the top stack
 
 #]" 0x01 0x 		# The hint provides the binary representation of the index
 ```
