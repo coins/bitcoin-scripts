@@ -418,7 +418,7 @@ A signature can't sign itself. Thus, a signature commitment is possible only if 
 
 ## Time and Block Height 
 
-The following script proves that the block height is at least 700123
+The following script proves that the block height is at least 700123. 
 
 ```
 btcdeb "[
@@ -429,7 +429,8 @@ OP_CHECKLOCKTIMEVERIFY
 # ]" 700123
 ```
 
-The same technique applies to get a minimum network time. Furthermore, it can be applied to `OP_CHECKSEQUENCEVERIFY` to get a minimum age of the output spent in the TX.
+The same technique applies to get a minimum network time. Furthermore, it can be applied to `OP_CHECKSEQUENCEVERIFY` to get a minimum age of the output spent in the TX. In a script where it is advantagous to provide the highest possible block height, the value on the stack would be the current block height. 
+
 
 
 ## Selecting an Element from an Array
