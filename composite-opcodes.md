@@ -97,7 +97,7 @@ We can use our OP_MUL implementations to generalise this for other divisors than
 ### OP_2MOD
 Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
-```
+```sh
 # Modulo 2 with the help of a hint
 #
 # In this example, we compute 119 mod 2.
@@ -135,7 +135,7 @@ btcdeb "[
 This is an integer division by `8`. The number `123459` is divided by `8`. The result is `15432`. It is given to us as a hint from the unlocking script. We only verfiy its correctness because that's what matters and we can do that much more efficiently than calculating it ourselves.
 
 
-```
+```sh
 btcdeb "[
 	OP_DUP
 	OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
@@ -154,7 +154,7 @@ Here we use `OP_8MUL = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD`, which is easy
 ### OP_8DIV_REM
 
 We can easily modify the above implementation to return both the result of the integer devision _and_ the remainder.
-```
+```sh
 btcdeb "[
 
 	OP_DUP
