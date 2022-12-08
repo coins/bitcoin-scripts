@@ -1,6 +1,6 @@
 # Lookup Table
 
-Using `OP_PICK` to implement lockup tables. This is particulariy useful if we want to randomly access multiple elements in sequence, since we can reuse the lockup table without using any more opcodes. The following example is a lookup table for powers of two.
+Using `OP_PICK` to implement lockup tables. This is particularily useful if we want to randomly access multiple elements in sequence, since we can reuse the lockup table without using any more opcodes. The following example is a lookup table for powers of two.
 
 ```sh
 
