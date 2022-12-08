@@ -60,3 +60,131 @@ btcdeb "[
 ```
 
 As soon as the lookup table is on the stack, we can efficiently use it from anywhere in the script. Using `OP_DEPTH` we can even handle dynamic stack sizes to perform the required "pointer arithmetic" for the offset to be used with `OP_PICK`.
+
+
+
+
+
+
+## Multiple Lookup Tables 
+
+Here is an example of two different lookup tables, which allow to simmulate function calls.
+
+```
+btcdeb "[ 
+
+	7 					# An arbitrary index is on the altstack
+	3 					# Annother arbitrary index is on the altstack
+
+	TOALTSTACK
+	TOALTSTACK
+
+	
+	# The lookup table for pow2
+	524288
+	262144
+	131072
+	65536
+
+	32768
+	16384
+	8192
+	4096
+
+	2048
+	1024
+	512
+	256
+
+	128
+	64
+	32
+	16
+	
+	8
+	4
+	2
+	1
+
+
+	# The lookup table for get_prime
+	89
+	83
+	79
+	73
+	
+	71
+	67
+	61
+	59
+	
+	53
+	47
+	43
+	41
+	
+	37
+	31
+	29
+	23
+	
+	19
+	17
+	13
+	11
+	
+	7
+	5
+	3
+	2
+
+
+	# Get the first argument onto the stack
+	FROMALTSTACK
+
+	# Our first 'function call' is pow2
+	24 ADD PICK
+
+	# Now the result pow2(7) = 2**7 = 128 is on the stack
+
+
+	# Get the second argument onto the stack 
+	FROMALTSTACK
+	SWAP
+	TOALTSTACK
+
+
+	# Our second 'function call' is get_prime
+	PICK	
+
+	# We use the result as an argument for another call of is get_prime
+	PICK
+
+
+	# And with that result we call again pow2
+	24 ADD PICK
+
+
+	TOALTSTACK
+
+
+	# At the end of the program we have to drop our lookup table to clean up the stack
+	2DROP 2DROP 
+	2DROP 2DROP
+	2DROP 2DROP 
+	2DROP 2DROP
+	2DROP 2DROP
+
+	2DROP 2DROP 
+	2DROP 2DROP
+	2DROP 2DROP 
+	2DROP 2DROP
+	2DROP 2DROP
+	2DROP 2DROP
+
+	# Now the results of our function calls are on the stack
+	FROMALTSTACK
+	FROMALTSTACK	
+
+# ]"
+```
