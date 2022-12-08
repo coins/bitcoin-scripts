@@ -462,8 +462,14 @@ btcdeb "[
 		ENDIF
 	ENDIF
 
+
+	# Verify that the hin was correct
 	FROMALTSTACK
 	EQUALVERIFY
+
+
+	# Now the corresponding element is on the top stack
+
 
 #]" 0x01 0x 		# The hint provides the binary representation of the index
 ```
