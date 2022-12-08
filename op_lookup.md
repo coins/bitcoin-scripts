@@ -24,11 +24,9 @@ btcdeb "[
 	4096
 
 	FROMALTSTACK
-	42
-	OP_ADD
 	OP_PICK
 
-	# Now the element at index is on the stack
+	# Now the element at `index` is on the stack
 
 
 	TOALTSTACK
