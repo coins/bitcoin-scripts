@@ -204,14 +204,20 @@ btcdeb "[
 ```
 
 ## Dynamic Function Names 
-In our previous example we assumed to make all function calls at the same stack height. The following script accounts for calls at dynamic stack heights:
+In our previous example we assumed to make all function calls at the same stack height, so we could use the same address `<fn_address>` for each call:
+```
+<argument>
+<fn_address> ADD PICK
+```
+
+The following script accounts for calls at dynamic stack heights:
 
 ```
 <argument>
 OP_DEPTH <fn_address> SUB ADD PICK
 ```
 
-A bit more convenient is to use negative numbers for the `<fn_address>` such that it can be the top stack item:
+A bit more convenient is to use the negative of `<fn_address>` such that it can become the first item of the function call:
 ```
 <argument>
 <fn_address> OP_DEPTH ADD ADD PICK
