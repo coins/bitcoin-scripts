@@ -75,11 +75,9 @@ Integer division by 2 implemented with a _"hint"_. That means the result of the 
 btcdeb "[ 
 
   119             # Some arbitrary input is on the stack
-
   OP_OVER         # Copy the hint to the top of the stack
 
   OP_DUP OP_ADD   # Multiply the hint by 2
-
   OP_SUB          # Subtract that from the 119
               
 
