@@ -68,7 +68,7 @@ Integer division by 2 implemented with a _"hint"_. That means the result of the 
 
 ```
 # Integer division by 2 with the help of a hint
-# In this example, the we divide 119 by 2.
+# In this example, we divide 119 by 2.
 # In the unlocking script the prover provides the result
 # as a hint 119//2 = 59, which we verify.
 
