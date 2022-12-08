@@ -66,9 +66,9 @@ As soon as the lookup table is on the stack, we can efficiently use it from anyw
 
 
 
-## Multiple Lookup Tables 
+## Multiple Lookup Tables and Function Calls
 
-Here is an example of two different lookup tables, which allow to simmulate function calls. The position of the lookup table in the stack becomes the function name.
+Here is an example of two different lookup tables, which allow to mimic function calls. The position of the lookup table in the stack becomes the function name.
 
 ```
 btcdeb "[ 
