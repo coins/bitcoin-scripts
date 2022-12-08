@@ -416,6 +416,51 @@ OP_CHECKLOCKTIMEVERIFY
 
 The same technique applies to get a minimum network time. Furthermore, it can be applied to `OP_CHECKSEQUENCEVERIFY` to get a minimum age of the output spent in the TX.
 
+
+## Selecting an Element from an Array
+
+The following script selects an element from an array. The input can select an element from an array with five elements. In this example, the fourth element (the element at index `0x03`), is selected. So we will have 23 on the stack. 
+
+```
+btcdeb "[ 
+
+	OP_DUP
+	OP_0NOTEQUAL OP_NOTIF
+		13 0
+	OP_ENDIF
+
+	OP_1SUB
+	OP_DUP
+	OP_0NOTEQUAL OP_NOTIF
+		17 0
+	OP_ENDIF
+
+	OP_1SUB
+	OP_DUP
+	OP_0NOTEQUAL OP_NOTIF
+		19 0
+	OP_ENDIF
+
+	OP_1SUB
+	OP_DUP
+	OP_NOTIF
+		23 0
+	OP_ENDIF
+
+	OP_1SUB
+	OP_NOTIF
+		29
+	OP_ENDIF
+
+	OP_NIP
+
+# ]" 0x03
+```
+
+This can be easily generalized for an array of tuples.
+
+
+
 ## Script Limits
 
 - [Maximum number of op_codes in script](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script) Limit is 201 non-push opcodes (OP_1 etc, as well as direct pushes are not counted). Non-executed opcodes are also counted and the number of public keys participating in *executed* CHECKMULTISIG and CHDCKMULTISIGVERIFY are also counted towards that limit. the bip-tapscript draft proposes to remove that limit.
