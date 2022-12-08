@@ -63,6 +63,39 @@ OP_ADD
 
 ## OP_MOD and OP_DIV
 
+### OP_2DIV
+Integer division by 2 implemented with a _"hint"_. That means the result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
+
+```
+# Integer division by 2 with the help of a hint
+# In this example, the we divide 119 by 2.
+# In the unlocking script the prover provides the result
+# as a hint 119//2 = 59, which we verify.
+
+btcdeb "[ 
+
+  119             # Some arbitrary input is on the stack
+
+  OP_OVER         # Copy the hint to the top of the stack
+
+  OP_DUP OP_ADD   # Multiply the hint by 2
+
+  OP_SUB          # Subtract that from the 119
+              
+
+  # Now the remainder should be on the stack
+  # We verify that it is exactly 0 or 1
+              
+  OP_DUP          # Make a copy
+  OP_0NOTEQUAL    # Returns 0 if the input is 0. 1 otherwise.
+  OP_EQUALVERIFY
+
+# ]" 59           # The hint provided is 59 = 119/2
+```
+
+We can use our OP_MUL implementations to generalise this for other divisors than 2.
+
+
 ### OP_2MOD
 Modulo 2 implemented with _"hints"_. The result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
@@ -78,24 +111,8 @@ OP_NUMEQUALVERIFY
 OP_FROMALTSTACK
 ```
 
-### OP_2DIV
-Integer division by 2 implemented with a _"hint"_. That means the result of the operation is given to us in the unlocking script and we just _verify_ the correctness of the result. This is more efficient than computing the result ourselves.
 
-```
-<HINT: X DIV 2>
-OP_DUP
-OP_DUP
-OP_ADD
-<X>
-OP_SWAP
-OP_SUB
-0
-2
-OP_WITHIN
-OP_VERIFY
-```
 
-We can use our OP_MUL implementations to generalise this for other divisors than 2.
 
 
 ### OP_8DIV
