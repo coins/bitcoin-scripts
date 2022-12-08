@@ -220,7 +220,7 @@ OP_DEPTH <fn_address> SUB ADD PICK
 A bit more convenient is to use the negative of `<fn_address>` such that it can become the first item of the function call:
 ```
 <argument>
-<fn_address> OP_DEPTH ADD ADD PICK
+< -fn_address > OP_DEPTH ADD ADD PICK
 ```
 
 Note that `<fn_address>` is a number and this allows to even dynamically define the function to be called. 
