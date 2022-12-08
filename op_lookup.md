@@ -59,7 +59,7 @@ btcdeb "[
 # ]"
 ```
 
-As soon as the lookup table is on the stack, we can efficiently use it from anywhere in the script. Using `OP_DEPTH` we can even handle dynamic stack sizes to perform the required "pointer arithmetic" for the offset to be used with `OP_PICK`.
+As soon as the lookup table is on the stack, we can efficiently use it from anywhere in the script. Using `OP_DEPTH` we can even handle dynamic stack sizes to perform the required "pointer arithmetic" for the offset to be used with `OP_PICK`. In this example, the address of `pow2` is `24`.
 
 
 
@@ -68,7 +68,7 @@ As soon as the lookup table is on the stack, we can efficiently use it from anyw
 
 ## Multiple Lookup Tables 
 
-Here is an example of two different lookup tables, which allow to simmulate function calls.
+Here is an example of two different lookup tables, which allow to simmulate function calls. The position of the lookup table in the stack becomes the function name.
 
 ```
 btcdeb "[ 
@@ -187,4 +187,11 @@ btcdeb "[
 	FROMALTSTACK	
 
 # ]"
+```
+
+## Dynamic Function Names 
+In our previous example we assumed to make all function calls at the same stack height. The following script accounts for dynamic stack heights:
+
+```
+OP_DEPTH <fn_address> SUB ADD PICK
 ```
