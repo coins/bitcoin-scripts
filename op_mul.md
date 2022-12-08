@@ -3,7 +3,7 @@ The following is a bitcoin script implementing the opcode `OP_MUL` to multiply `
 
 DISCLAIMER: THE CODE IS INSECURE! DO NOT USE IN PRODUCTION!!
 
-## OP_MUL2
+## OP_2MUL
 Multiply by 2
 ```
 OP_MUL2 = OP_DUP OP_ADD
@@ -22,6 +22,14 @@ OP_MUL8 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 OP_MUL16 = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ...
 ```
+
+## OP_3MUL
+
+Multiply the top stack item by three
+```
+OP_DUP OP_DUP OP_ADD OP_ADD
+```
+
 
 ## OP_MUL
 Multiply `a` by `b`. The result of `a * b` must fit into a signed 32-bit integer.
