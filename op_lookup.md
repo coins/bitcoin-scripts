@@ -73,13 +73,17 @@ Here is an example of two different lookup tables, which allow to mimic function
 ```
 btcdeb "[ 
 
-	7 					# An arbitrary index is on the altstack
-	3 					# Annother arbitrary index is on the altstack
+	7 					# An arbitrary index is on the stack
+	3 					# Annother arbitrary index is on the stack
 
+	# Put them on the altstack for later
 	TOALTSTACK
 	TOALTSTACK
 
-	
+
+
+	######### Function Definitions #########
+
 	# The lookup table for pow2
 	524288
 	262144
@@ -139,10 +143,13 @@ btcdeb "[
 	2
 
 
+	############# Examples of Function Calls ##########
+
+
 	# Get the first argument onto the stack
 	FROMALTSTACK
 
-	# Our first 'function call' is pow2
+	# Our first 'function call' is pow2. 24 is its address and 'function name'.
 	24 ADD PICK
 
 	# Now the result pow2(7) = 2**7 = 128 is on the stack
@@ -154,7 +161,7 @@ btcdeb "[
 	TOALTSTACK
 
 
-	# Our second 'function call' is get_prime
+	# Our second 'function call' is get_prime. Its address is 0. So no overhead
 	PICK	
 
 	# We use the result as an argument for another call of is get_prime
@@ -164,9 +171,15 @@ btcdeb "[
 	# And with that result we call again pow2
 	24 ADD PICK
 
-
+	
+	# Now we have pow2( get_prime(get_prime( input_b )) ) on the stack
 	TOALTSTACK
 
+	
+
+
+
+	######## Boilerplate to Cleanup ########
 
 	# At the end of the program we have to drop our lookup table to clean up the stack
 	2DROP 2DROP 
@@ -182,7 +195,8 @@ btcdeb "[
 	2DROP 2DROP
 	2DROP 2DROP
 
-	# Now the results of our function calls are on the stack
+
+	# Push the results of our function calls back on the stack
 	FROMALTSTACK
 	FROMALTSTACK	
 
