@@ -190,7 +190,7 @@ btcdeb "[
 ```
 
 ## Dynamic Function Names 
-In our previous example we assumed to make all function calls at the same stack height. The following script accounts for dynamic stack heights:
+In our previous example we assumed to make all function calls at the same stack height. The following script accounts for calls at dynamic stack heights:
 
 ```
 OP_DEPTH <fn_address> SUB ADD PICK
