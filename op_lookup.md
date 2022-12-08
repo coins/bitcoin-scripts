@@ -209,3 +209,11 @@ In our previous example we assumed to make all function calls at the same stack 
 ```
 OP_DEPTH <fn_address> SUB ADD PICK
 ```
+
+Note that `<fn_address>` is a number and this allows to even dynamically define the function to be called. 
+
+## Functions with Multiple Arguments
+
+
+
+
