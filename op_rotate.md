@@ -1,6 +1,6 @@
 # Bitwise Rotation of a 32-bit Integer
 
-A Bitcoin Script implementing a bitwise rotation of a 32-bit word by 3 bits to the right. Find [more opcodes here](https://github.com/coins/bitcoin-scripts/blob/master/composite-opcodes.md).
+A Bitcoin Script implementing a bitwise rotation of a 32-bit word by 3 bits to the right. If you are unfamiliar with [nondeterminism, check out this simple example first]([https://github.com/coins/bitcoin-scripts/blob/master/composite-opcodes.md](https://github.com/coins/bitcoin-scripts/blob/master/composite-opcodes.md#op_2div)).
 
 ```
 btcdeb "[
