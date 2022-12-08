@@ -45,6 +45,8 @@ btcdeb "[
 	1
 
 	FROMALTSTACK
+	
+	# The magic function call happens here 
 	OP_PICK
 
 	# Now the element at index=7 is on the stack. It is 2^7 = 128
