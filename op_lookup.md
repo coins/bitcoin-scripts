@@ -70,7 +70,7 @@ As soon as the lookup table is on the stack, we can efficiently use it from anyw
 
 Here is an example of two different lookup tables, which allow to mimic function calls. The position of the lookup table in the stack becomes the function name.
 
-```
+```sh
 btcdeb "[ 
 
 	7 					# An arbitrary index is on the stack
@@ -161,7 +161,7 @@ btcdeb "[
 	TOALTSTACK
 
 
-	# Our second 'function call' is get_prime. Its address is 0. So no overhead
+	# Our second 'function call' is get_prime. Its address is 0. So no addition needed for this 'name'
 	PICK	
 
 	# We use the result as an argument for another call of is get_prime
