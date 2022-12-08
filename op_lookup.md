@@ -32,9 +32,9 @@ btcdeb "[
 	TOALTSTACK
 
 	# At the end of the program we have to delete our lookup table
-	OP_DROP OP_DROP OP_DROP OP_DROP
-	OP_DROP OP_DROP OP_DROP OP_DROP
-	OP_DROP OP_DROP OP_DROP OP_DROP
+	OP_2DROP OP_2DROP
+	OP_2DROP OP_2DROP
+	OP_2DROP OP_2DROP
 
 	FROMALTSTACK
 # ]"
