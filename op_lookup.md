@@ -58,3 +58,5 @@ btcdeb "[
 	FROMALTSTACK
 # ]"
 ```
+
+As soon as the lookup table is on the stack, we can efficiently use it from anywhere in the script. Using `OP_DEPTH` we can even handle dynamic stack sizes to perform the required "pointer arithmetic" for the offset to be used with `OP_PICK`.
