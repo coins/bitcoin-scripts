@@ -1,6 +1,6 @@
 # Lookup Table
 
-Using `OP_PICK` to implement lockup tables. This is particulariy useful if we want to randomly access multiple elements in sequence.
+Using `OP_PICK` to implement lockup tables. This is particulariy useful if we want to randomly access multiple elements in sequence because we can reuse the lockup table without using any more opcodes.
 
 ```sh
 
