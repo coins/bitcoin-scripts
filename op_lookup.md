@@ -170,7 +170,7 @@ btcdeb "[
 	# Our second 'function call' is get_prime. Its address is 0. So no addition needed for this 'name'
 	PICK	
 
-	# We use the result as an argument for another call of is get_prime
+	# We use the result as an argument for another call of get_prime
 	PICK
 
 
