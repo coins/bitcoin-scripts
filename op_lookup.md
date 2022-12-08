@@ -9,7 +9,7 @@ btcdeb "[
 	7			# An arbitrary index is on the stack
 	TOALTSTACK
 
-	# Our lookup table is put onto the stack
+	# The elements of our lookup table are put onto the stack
 	2
 	4
 	8
