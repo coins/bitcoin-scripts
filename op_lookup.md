@@ -1,4 +1,4 @@
-# Lookup Table
+# Lookup Tables and Static Functions
 
 Using `OP_PICK` to implement lockup tables. `OP_PICK`: _The item n back in the stack is copied to the top._
 
