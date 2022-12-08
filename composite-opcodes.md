@@ -435,7 +435,7 @@ A signature can't sign itself. Thus, a signature commitment is possible only if 
 
 ## Time and Block Height 
 
-The following script proves that the block height is at least 700123. 
+The following script prove can almost proof the block height. Here the unlocking script provides height `700123` and the script verifies that the block height is at least that high
 
 ```
 btcdeb "[
