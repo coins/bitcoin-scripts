@@ -207,11 +207,13 @@ btcdeb "[
 In our previous example we assumed to make all function calls at the same stack height. The following script accounts for calls at dynamic stack heights:
 
 ```
+<argument>
 OP_DEPTH <fn_address> SUB ADD PICK
 ```
 
 A bit more convenient is to use negative numbers for the `<fn_address>` such that it can be the top stack item:
 ```
+<argument>
 <fn_address> OP_DEPTH ADD ADD PICK
 ```
 
