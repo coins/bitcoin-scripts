@@ -435,6 +435,42 @@ The same technique applies to get a minimum network time. Furthermore, it can be
 
 ## Selecting an Element from an Array
 
+### Selecting from an Array: Solution 1
+
+```
+btcdeb "[ 
+	
+
+	0x02			# On the stack is the index we want to access
+	TOALTSTACK
+
+	IF
+		IF
+				0x0d 0x04
+		ELSE
+				0x11 0x03
+		ENDIF
+	ELSE
+		IF
+				0x13 0x02
+		ELSE
+			IF
+				0x17 0x01
+			ELSE
+				0x1d 0x00
+			ENDIF
+		ENDIF
+	ENDIF
+
+	FROMALTSTACK
+	EQUALVERIFY
+
+#]" 0x01 0x 		# The hint provides the binary representation of the index
+```
+
+
+### Selecting from an Array: Solution 2
+
 The following script selects an element from an array. The input can select an element from an array with five elements. In this example, the fourth element (the element at index `0x03`), is selected. So we will have 23 on the stack. 
 
 ```
