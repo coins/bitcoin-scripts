@@ -236,7 +236,7 @@ Note that `<fn_address>` is a number and this allows to even dynamically define 
 
 ## Efficient Cleanup
 
-Here's a hack using `OP_CHECKMULTISIG` to drop many elements from the stack at once.  
+Here's a hack using `OP_CHECKMULTISIG` to drop many elements from the stack at once. The stack we want to delete is interpreted as a 0-of-20 multisig.
 
 ```
 # Bitwise AND
