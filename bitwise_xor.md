@@ -6,7 +6,7 @@
 Bitwise XOR of byte-sized words. Once the 512 elements of the reusable lookup table are on the stack, a bitwise XOR of a byte costs only 26 instructions.
 
 
-```
+```sh
 btcdeb "[ 
 
 # Lookup table for 9-bit inputs f(x) = x & 0b01010101
