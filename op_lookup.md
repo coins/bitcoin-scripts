@@ -234,5 +234,51 @@ Note that `<fn_address>` is a number and this allows to even dynamically define 
 <!-- TODO: ## Functions with Multiple Arguments -->
 
 
+## Efficient Cleanup
+
+Here's a hack using `OP_CHECKMULTISIG` to drop many elements from the stack at once.  
+
+```
+# Bitwise AND
+
+btcdeb "[ 
+
+
+0
+0
+
+1
+2
+3
+4
+
+5
+6
+7
+8
+
+9
+10
+11
+12
+
+13
+14
+15
+16
+
+17
+18
+19
+20
+
+
+20
+OP_CHECKMULTISIG
+
+
+# ]"
+```
+
 
 
