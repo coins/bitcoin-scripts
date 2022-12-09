@@ -5,6 +5,7 @@
 
 Bitwise XOR of byte-sized words. Once the 512 elements of the reusable lookup table are on the stack, a bitwise XOR of a byte costs only 26 instructions.
 
+
 ```
 btcdeb "[ 
 
@@ -81,4 +82,26 @@ FROMALTSTACK
 ADD
 
 # ]"
+```
+
+### Python Implementation 
+
+Here's a simplified Python implementation, which demonstrates the idea behind the above implementation:
+
+```python
+# Inputs
+A = 0b00101010
+B = 0b10100100
+
+# Algorithm 
+A_even = A & 0b01010101
+A_odd = A & 0b10101010
+B_even = B & 0b01010101
+B_odd = B & 0b10101010
+A_andxor_B_even = A_even + B_even
+A_andxor_B_odd = A_odd + B_odd
+A_xor_B_even = A_andxor_B_even & 0b01010101
+A_xor_B_odd = A_andxor_B_odd & 0b10101010
+A_xor_B = A_xor_B_odd + A_xor_B_even
+print(bin(A_xor_B))
 ```
