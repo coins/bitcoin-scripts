@@ -318,18 +318,6 @@ Here you can find a [full implementation of a bitwise rotation of a 32-bit word]
 A right rotation by `k` bits can be performed with an integer division by `2^k`. To verify the according hint we require `k` many `OP_2MUL`.
 
 
-### OP_ADD_MOD
-
-Modular addition `A + B mod M`. Assuming that `0 <= A <= M` and `0 <= B <= M`
-```
-<A>
-<B>
-ADD
-<M>
-SUB
-ABS
-```
-
 
 
 ### Verify the Binary Representation of a Number
