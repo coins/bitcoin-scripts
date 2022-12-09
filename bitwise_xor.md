@@ -3,7 +3,7 @@
 
 ## Bitwise XOR of Byte-sized Words
 
-Bitwise XOR of byte-sized words. Once the reusable lookup table is on the stack, an bitwise XOR of a byte costs about 30 instructions.
+Bitwise XOR of byte-sized words. Once the 512 elements of the reusable lookup table are on the stack, a bitwise XOR of a byte costs only 26 instructions.
 
 ```
 btcdeb "[ 
