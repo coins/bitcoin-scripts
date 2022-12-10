@@ -492,8 +492,12 @@ OP_ROLL
 - [520-byte limitation on serialized script size](https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki#520-byte-limitation-on-serialized-script-size)
 - max push is 520 bytes
 - In Taproot Script many of these [limitations have been removed](https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki#Resource_limits)
+- The stack and the altstack may contain at most 1000 item together in total.
 - There is positive zero `0x` and negative zero `0x80`. Both can have trailing zeros i.e `0x0080`. There are 1041 different encodings for False.
-
+- "The argument of `OP_IF` / `NOTIF` in P2WSH must be minimal" 
+  - See [here](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-August/013014.html), and [here](https://bips.xyz/141#new-script-semantics). 
+  - _"An_ `OP_0NOTEQUAL` _may be used before_ `OP_IF` _or_ `OP_NOTIF` _to imitate the original behaviour (which may also re-enable the malleability vector depending on the exact script)."_
+- You cannot use `op_checkmultisig` in Taproot scripts
 
 
 ## See Also 
