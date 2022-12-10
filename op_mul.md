@@ -99,7 +99,7 @@ btcdeb "[
 "] 60 14
 ```
 
-#### Circut Size 
+#### Circuit Sizes 
 The number of required opcodes is linear in bit size of `b`:
 - `4 bits -> 52 opcodes`
 - `5 bits -> 71 opcodes`
@@ -107,4 +107,4 @@ The number of required opcodes is linear in bit size of `b`:
 - `7 bits -> 115 opcodes`
 - `8 bits -> 140 opcodes`
 
-Maximum number of opcodes per script is 201 ([source](https://bitcoin.stackexchange.com/questions/38230/maximum-number-of-op-codes-in-script)).
+
