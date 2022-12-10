@@ -244,10 +244,10 @@ Here's a hack using `OP_CHECKMULTISIG` to drop many elements from the stack with
 btcdeb "[ 
 
 
-0
-0
+0  # Some random stack item that is required because of a quirk in CHECKMULTISIG. Could be anything 
+0  # This is the number of signatures required in the 0-of-20 multisig 
 
-1
+1  # The 20 stack items we want to delete
 2
 3
 4
