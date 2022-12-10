@@ -110,7 +110,7 @@ The number of required opcodes is linear in bit size of `b`:
 
 ## Multiplication by factors close to powers of 2
 
-In this example we multiply the top stack item by `31` which is close to `32 = 2**5`. We use that `x * 31 = x * 32 - x`:
+In this example we multiply the top stack item by `127` which is close to `128 = 2**7`. We use that `x * 127 = x * 128 - x`:
 
 ```
 btcdeb "[ 
@@ -121,17 +121,20 @@ btcdeb "[
 	# Duplicate it
 	DUP	
 
-	# Multiply it by 32
+	# Multiply it by 128
 	DUP ADD 
 	DUP ADD 
 	DUP ADD 
 	DUP ADD 
 	DUP ADD
+	DUP ADD
+	DUP ADD
 
-	# Subtract the original input to multiplication by 31
+	# Subtract the original input to get a multiplication by 127
 	SWAP
 	SUB
 # ]" 
+
 ```
 
 The above can be easily generalized to play all kinds of code golf to find shortest expressions for multiplications by a constant expressed as sums and differences of powers of two. Even mxing in powers of three might sometimes be the most efficient.
