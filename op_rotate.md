@@ -328,3 +328,6 @@ OP_ENDIF
 # ]" 0x11111101 0x88888888
 
 ```
+
+
+We can make this even more efficient and generalize it by [using lookup tables](op_lookup.md)
