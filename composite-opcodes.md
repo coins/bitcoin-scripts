@@ -476,12 +476,14 @@ We can copy the item at the bottom of the stack
 
 ```
 OP_DEPTH
+OP_1SUB
 OP_PICK
 ```
 
 We can pop the item at the bottom of the stack
 ```
 OP_DEPTH
+OP_1SUB
 OP_ROLL
 ```
 
