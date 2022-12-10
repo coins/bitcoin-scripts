@@ -10,10 +10,11 @@ OP_2MUL = OP_DUP OP_ADD
 ```
 
 ## OP_MUL(2^k)
-Multiply by powers of 2
+Multiply by powers of 2 reduces to the following equation:
 ```
-OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_3MUL 
+OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_2MUL 
 ```
+So, to multiply a number by `2^k` we need `k * 2` instructions.
 
 Examples:
 ```
