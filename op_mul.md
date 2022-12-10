@@ -3,13 +3,13 @@ The following is a bitcoin script implementing the opcode `OP_MUL` to multiply `
 
 DISCLAIMER: THE CODE IS INSECURE! DO NOT USE IN PRODUCTION!!
 
-## OP_2MUL
+## OP_2MUL Multiplication by the Constant 2
 Multiply by 2
 ```
 OP_2MUL = OP_DUP OP_ADD
 ```
 
-## Powers of 2: OP_MUL(2^k)
+## OP_MUL(2^k) Multiplication by a Constant Power of 2
 Multiply by powers of 2 reduces to the following equation:
 ```
 OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_2MUL 
@@ -24,7 +24,7 @@ OP_16MUL = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD
 ...
 ```
 
-## OP_3MUL
+## OP_3MUL Multiplication by the Constant 3
 
 Multiply the top stack item by three
 ```
@@ -32,7 +32,7 @@ OP_DUP OP_DUP OP_ADD OP_ADD
 ```
 
 
-## OP_MUL
+## OP_MUL Multiplication with a 4-bit Variable
 Multiply `a` by `b`. The result of `a * b` must fit into a signed 32-bit integer.
 Additionally, the following script works only for `b<16` being a 4-bit integer.
 
@@ -108,7 +108,7 @@ The number of required opcodes is linear in bit size of `b`:
 - `8 bits -> 140 opcodes`
 
 
-## Multiplication by factors close to powers of 2
+## OP_127MUL Multiplication by a Constant close to a Powers of 2
 
 In this example we multiply the top stack item by `127` which is close to `128 = 2**7`. We use that `x * 127 = x * 128 - x`:
 
@@ -137,4 +137,66 @@ btcdeb "[
 
 ```
 
-The above can be easily generalized to play all kinds of code golf to find shortest expressions for multiplications by a constant expressed as sums and differences of powers of two. Even mxing in powers of three might sometimes be the most efficient.
+The above can be easily generalized to play all kinds of code golf to find shortest expressions for multiplications by a constant expressed as sums and differences of powers of two. Even mixing in powers of three might sometimes be the most efficient.
+
+## OP_1143MUL Multiplication by a Constant by Multiplying its Factors
+
+The following is a multiplication by `1143`, which uses its factorization `1143 = 127 * 9` and to compute 
+```
+  `x * 1143 
+= (x * 127) * 9 = (x * (128-1)) * (8 + 1)`
+= (x * 128 - x) * 8 + (x * 128 - x)
+```
+
+Here's the implementation
+```
+btcdeb "[ 
+	
+	# Input: Some random number on the stack
+	42	
+
+	#
+	# Multiply by 127
+	#
+
+	# Duplicate it
+	DUP	
+
+	# Multiply it by 128
+	DUP ADD 
+	DUP ADD 
+	DUP ADD 
+	DUP ADD 
+	DUP ADD
+	DUP ADD
+	DUP ADD
+
+	# Subtract the original input to get a multiplication by 127
+	SWAP
+	SUB
+
+
+
+	#
+	# Multiply by 9 
+	#
+
+	# Duplicate it
+	DUP	
+
+	# Multiply it by 8
+	DUP ADD 
+	DUP ADD 
+	DUP ADD
+
+	# Add the original input to get a multiplication by 9
+	ADD
+
+
+	#
+	# The result is a multiplication by 127 * 9
+	# 
+
+# ]" 
+
+```
