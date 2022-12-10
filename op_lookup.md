@@ -282,5 +282,5 @@ OP_CHECKMULTISIG
 
 
 ## Multiple Lookup Tables and Limits 
-Our script can have a few millions of instructions. But we can have at most 1000 items on the stack. That means we can have thousands of different lookup tables in a script. We only have to build them up, use them and then drop them to always retain the stack size under 1000.
+Our script can have a few million instructions. But we can have at most 1000 items on the stack. That means we can have thousands of different lookup tables in a script. We only have to build them up, use them and then drop them to always retain the stack size under 1000.
 
