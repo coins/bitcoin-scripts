@@ -92,3 +92,27 @@ A decaying MultiSig is also possible using a regular MultiSig. One party creates
 - It requires a new TX for every UTXO. 
 - Each party has to sign such a TX. 
 - Each party has to store all TXs securely.
+
+
+
+
+# Decaying MultiSig using nLockTime
+
+A decaying MultiSig that requires no bitcoin script other than regular MultiSigs.
+
+A 3-of-3 that decays into a 2-of-3 at block height `x`. 
+
+1. Alice, Bob, and Carol create a 3-of-3 regular MultiSig output.
+
+2. Alice signs the output with `nLocktime = x` and `SIGHASH_NONE`.
+3. She sends this partially signed TX to Bob and Carol.
+4. Bob and Carol do the same and send their transactions to the other two.
+5. They all make their transaction slightly unique, such that Alice cannot combine Bob and Carol's signatures to reduce it to a 1-of-3.
+  - E.g. by each signing distinct bits of the `nSequence` field, or distinct fees
+6. Now they are ready to receive the output trustlessly.
+
+
+## Limitations
+- For each output this ceremony is required.
+- For it to become trustless, the exact spending output has to be known upfront.
+- For a Schnorr MuSig the receiving output has to be known, too. E.g., it could be send to an output controlled by the remaining signers.
