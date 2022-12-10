@@ -108,7 +108,7 @@ The number of required opcodes is linear in bit size of `b`:
 - `8 bits -> 140 opcodes`
 
 
-### Multiplication by factors close to powers of 2
+## Multiplication by factors close to powers of 2
 
 In this example we multiply the top stack item by `31` which is close to `32 = 2**5`. We use that `x * 31 = x * 32 - x`:
 
