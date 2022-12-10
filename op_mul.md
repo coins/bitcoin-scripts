@@ -9,7 +9,7 @@ Multiply by 2
 OP_2MUL = OP_DUP OP_ADD
 ```
 
-## OP_MUL(2^k)
+## Powers of 2: OP_MUL(2^k)
 Multiply by powers of 2 reduces to the following equation:
 ```
 OP_MUL(2^k) = OP_MUL(2^(k-1)) OP_2MUL 
@@ -108,3 +108,30 @@ The number of required opcodes is linear in bit size of `b`:
 - `8 bits -> 140 opcodes`
 
 
+### Multiplication by factors close to powers of 2
+
+In this example we multiply the top stack item by `31` which is close to `32 = 2**5`. We use that `x * 31 = x * 32 - x`:
+
+```
+btcdeb "[ 
+	
+	# Input: Some random number on the stack
+	42	
+
+	# Duplicate it
+	DUP	
+
+	# Multiply it by 32
+	DUP ADD 
+	DUP ADD 
+	DUP ADD 
+	DUP ADD 
+	DUP ADD
+
+	# Subtract the original input to multiplication by 31
+	SWAP
+	SUB
+# ]" 
+```
+
+The above can be easily generalized to play all kinds of code golf to find shortest expressions for multiplications by a constant expressed as sums and differences of powers of two. Even mxing in powers of three might sometimes be the most efficient.
