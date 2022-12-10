@@ -83,4 +83,4 @@ OP_CHECKSEQUENCEVERIFY OP_DROP
 OP_CHECKSIGVERIFY
 ```
 
-The point `R = 1/2 G` has the smallest known `x` coordinate -- `x = 0x3b78ce563f89a0ed9414f5aa28ad0d96d6795f9c63`. If the public key is chosen `P = 1 G` then the ECDSA signature becomes `s=2(H(m)+x)`. So, the smaller `H(m)` the smaller `s` (as long as it is bigger than `x ~ 2^165`). Thus, the above output is spendable by the miner mining the lowest TX hash.
+The point `R = 1/2 G` has the smallest known `x` coordinate -- `x = 0x3b78ce563f89a0ed9414f5aa28ad0d96d6795f9c63`. If the public key is chosen `P = 1 G` then the ECDSA signature becomes `s=2(H(m)+x)`. So, the smaller `H(m)` the smaller `s` (as long as it is bigger than `x ~ 2^165`). Thus, the above output is spendable by the miner mining the lowest TX hash. Also [see the discussion here](https://gist.github.com/RobinLinus/95de641ed1e3d9fde83bdcf5ac289ce9)
