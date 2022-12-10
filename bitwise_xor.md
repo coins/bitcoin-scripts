@@ -113,7 +113,7 @@ We can use two lookup tables, each with 256 elements, one for `f(x) = (x & 0b101
 ```
 btcdeb "[ 
 
-# Lookup table for 8-bit inputs g(x) = (x & 0b10101010) >> 1
+# Lookup table for 8-bit inputs f(x) = (x & 0b10101010) >> 1
 85 84 85 84 81 80 81 80 85 84 85 84 81 80 81 80 
 69 68 69 68 65 64 65 64 69 68 69 68 65 64 65 64 
 85 84 85 84 81 80 81 80 85 84 85 84 81 80 81 80 
@@ -132,7 +132,7 @@ btcdeb "[
 05 04 05 04 01 00 01 00 05 04 05 04 01 00 01 00
 
 
-# Lookup table for 8-bit inputs f(x) = x & 0b01010101
+# Lookup table for 8-bit inputs g(x) = x & 0b01010101
 85 85 84 84 85 85 84 84 81 81 80 80 81 81 80 80 
 85 85 84 84 85 85 84 84 81 81 80 80 81 81 80 80 
 69 69 68 68 69 69 68 68 65 65 64 64 65 65 64 64 
