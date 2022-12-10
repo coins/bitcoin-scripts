@@ -470,6 +470,21 @@ MIN
 FROMALTSTACK
 ```
 
+## Stack Manipulation and Dynamic Arrays
+
+We can copy the item at the bottom of the stack  
+
+```
+OP_DEPTH
+OP_PICK
+```
+
+We can pop the item at the bottom of the stack
+```
+OP_DEPTH
+OP_ROLL
+```
+
 
 ## Script Limits
 
