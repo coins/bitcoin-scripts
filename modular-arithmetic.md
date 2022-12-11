@@ -112,11 +112,11 @@ btcdeb "[
 	DUP 128 GREATERTHANOREQUAL 
 	IF 128 SUB ENDIF
 
-	# If X was odd we have to subtract 1/4 mod N
+	# If the 2nd bit was odd we have to subtract 1/4 mod N
 	DUP 64 GREATERTHANOREQUAL 
 	IF 64 SUB ENDIF
 	
-	# If X was odd we have to subtract 1/8 mod N
+	# If the 3rd bit was odd we have to subtract 1/8 mod N
 	DUP 32 GREATERTHANOREQUAL 
 	IF 32 SUB ENDIF
 
