@@ -72,11 +72,11 @@ btcdeb "[
 
 ```
 
-The above can be easily generalized for n-bit words. A right shift then requires `9n+7` instructions.
+The above can be easily generalized for n-bit words. A right shift then requires `9(n-1)+7` instructions.
 
 #### Right Shift by 3 bits 
 
-A right shift by multiple bits is even cheaper. Here an example of a shift by 3 bits
+A right shift by multiple bits is even cheaper. A right shift by `k` bits requires `9(n-k) + 7k` instructions. Here an example of a shift by 3 bits
 
 ```
 btcdeb "[ 
