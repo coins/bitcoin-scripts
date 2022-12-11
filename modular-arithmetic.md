@@ -72,3 +72,49 @@ btcdeb "[
 ]"
 
 ```
+
+The above can be easily generalized for n-bit words. A right shift then requires `7n+7` instructions.
+
+#### Right Shift by 3 bits 
+
+A right shift by multiple bits is even cheaper. Here an example of a shift by 3 bits
+
+```
+btcdeb "[ 
+	
+	# Input X is on the stack, some random uint8
+	142
+
+	# Compute 2**7 * X == 1/2 * X mod 255 
+	DUP ADD
+	DUP 255 GREATERTHANOREQUAL
+	IF 255 SUB ENDIF
+
+	DUP ADD
+	DUP 255 GREATERTHANOREQUAL
+	IF 255 SUB ENDIF
+
+	DUP ADD
+	DUP 255 GREATERTHANOREQUAL
+	IF 255 SUB ENDIF
+
+	DUP ADD
+	DUP 255 GREATERTHANOREQUAL
+	IF 255 SUB ENDIF
+
+	DUP ADD
+	DUP 255 GREATERTHANOREQUAL
+	IF 255 SUB ENDIF
+	
+	# If X was odd we have to subtract 1/2 mod N
+	DUP 128 GREATERTHANOREQUAL 
+	IF 128 SUB ENDIF
+
+	DUP 64 GREATERTHANOREQUAL 
+	IF 64 SUB ENDIF
+
+	DUP 32 GREATERTHANOREQUAL 
+	IF 32 SUB ENDIF
+
+]"
+```
