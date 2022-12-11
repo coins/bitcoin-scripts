@@ -24,19 +24,21 @@ btcdeb "[
 This assumes the input to be less than 64. The overhead is 7 instructions. This works up to `mod 2**31` for any positive 31-bit number, without overflow. 
 
 
-## Multiply the Inverse of 2
-The following computes the least significant bit of a 8-bit number. It uses the multiplicative group mod `n = 2**8 - 1` where `1/2 == 2**7`
+## Multiply the Inverse of 2 for a Right Shift
+The following performs a right shift of a 8-bit word. It uses the multiplicative group mod `n = 2**8 - 1` where `1/2 == 2**7`
 
 ```
+#!/bin/sh
+
 btcdeb "[ 
 	
 	# Input X is on the stack, some random uint8
-	142
+	143
 
 	DUP
 
 	# Compute 2**7 * X == 1/2 * X mod 255 
-	2DUP ADD
+	DUP ADD
 	DUP 255 GREATERTHANOREQUAL
 	IF 255 SUB ENDIF
 
@@ -64,10 +66,19 @@ btcdeb "[
 	DUP 255 GREATERTHANOREQUAL
 	IF 255 SUB ENDIF
 	
-	
+	DUP TOALTSTACK
+
 	# Multiply by 2 and check if we get X again. If so, X was even
 	DUP ADD
 	NUMNOTEQUAL
+	IF 
+		-128	# Subtract 1/2 mod 255
+	ELSE
+		0
+	ENDIF
+	FROMALTSTACK
+	ADD
+
 # ]"
 
 ```
