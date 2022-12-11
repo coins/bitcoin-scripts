@@ -85,7 +85,8 @@ btcdeb "[
 	# Input X is on the stack, some random uint8
 	142
 
-	# Compute 2**7 * X == 1/2 * X mod 255 
+
+	# Compute 2**5 * X == 1/8 * X mod 255 
 	DUP ADD
 	DUP 255 GREATERTHANOREQUAL
 	IF 255 SUB ENDIF
@@ -106,13 +107,16 @@ btcdeb "[
 	DUP 255 GREATERTHANOREQUAL
 	IF 255 SUB ENDIF
 	
+	
 	# If X was odd we have to subtract 1/2 mod N
 	DUP 128 GREATERTHANOREQUAL 
 	IF 128 SUB ENDIF
 
+	# If X was odd we have to subtract 1/4 mod N
 	DUP 64 GREATERTHANOREQUAL 
 	IF 64 SUB ENDIF
-
+	
+	# If X was odd we have to subtract 1/8 mod N
 	DUP 32 GREATERTHANOREQUAL 
 	IF 32 SUB ENDIF
 
