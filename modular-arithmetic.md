@@ -17,8 +17,7 @@ btcdeb "[
 	# Perform the doubling
 	DUP ADD
   
-  
-#]"
+]"
 ```
 
 This assumes the input to be less than 64. The overhead is 7 instructions. This works up to `mod 2**31` for any positive 31-bit number, without overflow. 
@@ -86,7 +85,7 @@ btcdeb "[
 	142
 
 
-	# Compute 2**5 * X == 1/8 * X mod 255 
+	# Compute X * 1/8 == X * 2**5    (mod 255)
 	DUP ADD
 	DUP 255 GREATERTHANOREQUAL
 	IF 255 SUB ENDIF
