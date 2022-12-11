@@ -33,7 +33,9 @@ btcdeb "[
 	# Input X is on the stack, some random uint8
 	142
 
-	# Compute 2**7 * X == 1/2 * X mod 255 
+	# Compute X * 1/2 == X * (2**7)    (mod 255)
+	# With 7 doublings modulo 255
+	
 	DUP ADD
 	DUP 255 GREATERTHANOREQUAL
 	IF 255 SUB ENDIF
