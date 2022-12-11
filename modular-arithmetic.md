@@ -24,7 +24,7 @@ btcdeb "[
 This assumes the input to be less than 64. The overhead is 7 instructions. This works up to `mod 2**31` for any positive 31-bit number, without overflow. 
 
 
-## Multiply the Inverse of 2 for a Right Shift
+## Right Shift by Multiplying the Inverse of 2
 The following performs a right shift of a 8-bit word. It uses the multiplicative group mod `n = 2**8 - 1` where `1/2 == 2**7`
 
 ```
