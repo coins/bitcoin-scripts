@@ -380,7 +380,7 @@ OP_EQUAL
 
 ```
 
-# Nullify the First 8 bits of a 32-bit Number
+### Nullify the First 8 bits of a 32-bit Number
 
 ```
 btcdeb "[ 
