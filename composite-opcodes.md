@@ -90,7 +90,7 @@ btcdeb "[
   OP_0NOTEQUAL    # Returns 0 if the input is 0. 1 otherwise.
   OP_EQUALVERIFY
 
-# ]" 59           # The hint provided is 59 = 119/2
+]" 59           # The hint provided is 59 = 119/2
 ```
 
 We can use our OP_MUL implementations to generalise this for other divisors than 2.
@@ -125,7 +125,7 @@ btcdeb "[
   # We're done. The result is on the stack
   
 
-# ]" 59           # The hint provided is 59 = 119/2
+]" 59           # The hint provided is 59 = 119/2
 ```
 
 
@@ -148,7 +148,7 @@ btcdeb "[
 	8
 	OP_WITHIN
 	OP_VERIFY
-# ]" 15432
+]" 15432
 ```
 
 Here we use `OP_8MUL = OP_DUP OP_ADD OP_DUP OP_ADD OP_DUP OP_ADD`, which is easy to generalise for other divisors.
@@ -170,7 +170,7 @@ btcdeb "[
 	OP_WITHIN
 	OP_VERIFY
 
-# ]" 15432
+]" 15432
 ```
 
 
@@ -266,7 +266,7 @@ btcdeb "[
 		OP_NEGATE
 	OP_ENDIF
 
-# ]" 0xAAAAAAAA
+]" 0xAAAAAAAA
 ```
 
 ### Left rotate by 3 Bits
@@ -308,7 +308,7 @@ btcdeb "[
 
 
 	OP_ADD
-# ]" 1543
+]" 1543
 ```
 
 Here you can find a [full implementation of a bitwise rotation of a 32-bit word](op_rotate.md). 
@@ -376,7 +376,7 @@ OP_ENDIF
 147
 OP_EQUAL
 
-# ]" 1 0 0 1 0 0 1 1
+]" 1 0 0 1 0 0 1 1
 
 ```
 
@@ -488,7 +488,7 @@ btcdeb "[
 OP_DUP 0065cd1d OP_LESSTHAN	# The input is a block height iff it is less than 500'000'000
 OP_CHECKLOCKTIMEVERIFY
 
-# ]" 700123
+]" 700123
 ```
 
 The same technique applies to get a minimum network time. Furthermore, it can be applied to `OP_CHECKSEQUENCEVERIFY` to get a minimum age of the output spent in the TX. In a script where it is advantagous to provide the highest possible block height, the value on the stack would be the current block height. 
