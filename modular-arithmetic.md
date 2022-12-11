@@ -72,7 +72,7 @@ btcdeb "[
 
 ```
 
-The above can be easily generalized for n-bit words. A right shift then requires `7n+7` instructions.
+The above can be easily generalized for n-bit words. A right shift then requires `9n+7` instructions.
 
 #### Right Shift by 3 bits 
 
