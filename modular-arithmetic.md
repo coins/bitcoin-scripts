@@ -21,4 +21,4 @@ btcdeb "[
 #]"
 ```
 
-This assumes the input to be less than 64. The overhead is 7 instructions. This works up to `mod 2**31` for any 32-bit number, without overflow. 
+This assumes the input to be less than 64. The overhead is 7 instructions. This works up to `mod 2**31` for any positive 31-bit number, without overflow. 
