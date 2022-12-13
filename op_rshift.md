@@ -1,5 +1,8 @@
 # Bitwise Right Shift: OP_RSHIFT
 
+Bitwise right shifts of 32-bit words.
+
+
 ## Bitwise Right Shift by 3 Bits: OP_3RSHIFT
 
 ```
