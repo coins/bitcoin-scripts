@@ -168,12 +168,6 @@ ELSE
  0 TOALTSTACK
 ENDIF
 
-DUP 1073741823 EQUAL  
-IF
-    DROP
-    0
-ENDIF 
-
 
 # 23 doublings modulo 2**30 -1
 
