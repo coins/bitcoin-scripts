@@ -247,10 +247,10 @@ ENDIF
 
 
 
-    # If the 1rd bit was odd we have to subtract 1/2 mod N
+    # If the 1st bit was odd we have to subtract 1/2 mod N
     DUP 536870912 GREATERTHANOREQUAL IF 536870912 SUB ENDIF
 
-    # If the 2rd bit was odd we have to subtract 1/4 mod N
+    # If the 2nd bit was odd we have to subtract 1/4 mod N
     DUP 268435456 GREATERTHANOREQUAL IF 268435456 SUB ENDIF
 
     # If the 3rd bit was odd we have to subtract 1/8 mod N
