@@ -175,7 +175,7 @@ IF
 ENDIF 
 
 
-# 23 doublings modulo n
+# 23 doublings modulo 2**30 -1
 
     DUP ADD
     DUP 1073741823 GREATERTHANOREQUAL IF 1073741823 SUB ENDIF
