@@ -6,7 +6,7 @@ Examples:
 - [Rock Paper Scissors](rock-paper-scissors.md)
 - [Composite Opcodes](composite-opcodes.md)
 - [Integer Commitments](integer-commitments.md)
-- [Make sense of OP_CODESEPERATOR](op-codeseparator.md)
+- [Nondeterminism in Bitcoin Script](composite-opcodes.md#op_mod-and-op_div)
 
 and more.
 
