@@ -1,3 +1,6 @@
+Note, this text is mostly copy pasted from a chat and is totally unstructured. 
+
+
 # OP_CODESEPARATOR 
 
 OP_CODESEPARATOR let's you sign off on a specific script execution path -- a powerful primitive that we can use for interesting constructions?
