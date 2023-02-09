@@ -1,4 +1,4 @@
-Note, this text is mostly copy pasted from a chat and is totally unstructured. 
+Note, this text is mostly copy pasted from a chat history and is totally unstructured and might not make much sense in some places. The overall idea is correct though. 
 
 
 # OP_CODESEPARATOR 
