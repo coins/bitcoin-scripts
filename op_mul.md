@@ -108,7 +108,7 @@ The number of required opcodes is linear in bit size of `b`:
 - `8 bits -> 140 opcodes`
 
 
-## OP_127MUL Multiplication by a Constant close to a Powers of 2
+## OP_127MUL Multiplication by a Constant close to a Power of 2
 
 In this example we multiply the top stack item by `127` which is close to `128 = 2**7`. We use that `x * 127 = x * 128 - x`:
 
