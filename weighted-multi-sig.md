@@ -76,3 +76,54 @@ or
 <sig_1> <sig_3>
 ```
 
+
+ # Improved Weighted MultiSig 
+
+Every person of the weighted MultiSig can have an explicit weight. This scripts checks that the sum of the participants is greater than the threshold.
+
+```
+IF
+   <key_personA>
+   CHECKSIGVERIFY
+   <weightA>
+ELSE
+   0
+ENDIF
+TOALTSTACK
+
+IF
+   <key_personB>
+   CHECKSIGVERIFY
+   <weightB>
+ELSE
+   0
+ENDIF
+TOALTSTACK
+
+IF
+   <key_personC>
+   CHECKSIGVERIFY
+   <weightC>
+ELSE
+   0
+ENDIF
+TOALTSTACK
+
+...
+
+
+
+FROMALTSTACK
+FROMALTSTACK
+FROMALTSTACK
+
+...
+
+ADD
+ADD
+ADD
+<threshold>
+GREATEREQUAL
+VERIFY
+
+```
