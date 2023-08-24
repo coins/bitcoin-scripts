@@ -166,7 +166,7 @@ OP_ENDIF
 
 ## Ground-Truth in Python 
 
-```
+```python
 import hashlib
 
 def hash_data(data):
