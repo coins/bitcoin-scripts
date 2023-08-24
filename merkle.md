@@ -1,4 +1,4 @@
-# Merkle Path Verification in Bitcoin Script
+# Merkle Path Verification 
 
 Requires `OP_CAT`, as in Liquid Script. Tested in [Script Wizard](https://ide.scriptwiz.app/)
 
@@ -13,8 +13,10 @@ Requires `OP_CAT`, as in Liquid Script. Tested in [Script Wizard](https://ide.sc
 <0xf65cb638eaba0fd71eb0c3d1c657094cf917f3f7eb4a26f38a7ac34e200e6068>
 <0xe11f21292c2a7f219e4d89fdf2643de7bfc74a6389bf0d602148f3faaa23182d>
 <0x8bf845de9cde12824b810e454309c34c112c0ea409e7318c3fc39a4316e8ebfd>
+// The leaf we want to prove inclusion for
 <'test_data_chunk_47'>
-<0x2f>
+// The index of the leaf
+<47>
 
 
 OP_TOALTSTACK
