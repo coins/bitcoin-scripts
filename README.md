@@ -22,3 +22,7 @@ Note: In many examples we're using the [Bitcoin Script Debugger](https://github.
 ## Disclaimer 
 
 > **DO NOT USE IN PRODUCTION! THE SCRIPTS ARE NOT SECURE!**
+
+
+## Interesting Links 
+- [List of new opcodes in Liquid](https://github.com/ElementsProject/elements/blob/master/doc/tapscript_opcodes.md)
