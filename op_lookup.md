@@ -8,7 +8,7 @@ This is particularily useful if we want to randomly access multiple elements in 
 
 ## Powers of 2 
 
-The is a lookup table for powers of two.
+This is a lookup table for powers of two.
 
 ```sh
 
