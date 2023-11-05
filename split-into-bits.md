@@ -138,3 +138,37 @@ loop( N - 1, _ => `FROMALTSTACK` ),
 
 ]
 ```
+
+
+## Nullify Leading Bits
+
+```js
+const N = 16;   // The bit length
+const T = 8;    // Number of leading bits to nullify 
+
+[
+
+// Push the lookup table onto the stack
+loop( T, i => `
+    ${ 2 ** (N - T + i) }
+    0
+`),
+
+// The input value
+// We use a bit string for debugging
+// It's a single item on the stack
+0b1010110011111111,
+
+// The loop
+loop( T, i => `
+    DUP
+    ${ 2 ** (N - 1 - i) }
+    GREATERTHANOREQUAL
+    1ADD
+    ROLL
+    SUB
+    NIP
+`),
+
+]
+```
