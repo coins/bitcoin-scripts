@@ -102,3 +102,38 @@ FROMALTSTACK
 
 `
 ```
+
+#### Generic n-bit Template
+
+```js
+const N = 30; // The bit length
+
+[
+// Push the lookup table onto the stack
+loop(N - 1, i => `
+    ${ 2**(i + 1) }
+    0
+`),
+
+// The input value
+// We use a bit string for debugging
+// It's a single item on the stack
+0b0001000000000001,
+
+// The loop
+loop(N - 1, i => `
+    DUP
+    ${ 2 ** (N - 1 - i) }
+    GREATERTHANOREQUAL
+    1ADD
+    ROLL
+    SUB
+    SWAP
+    TOALTSTACK
+`),
+
+// Read the result from the altstack
+loop(N - 1, _ => `FROMALTSTACK`),
+
+]
+```
