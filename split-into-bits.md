@@ -109,9 +109,10 @@ FROMALTSTACK
 const N = 30; // The bit length
 
 [
+
 // Push the lookup table onto the stack
-loop(N - 1, i => `
-    ${ 2**(i + 1) }
+loop( N - 1, i => `
+    ${ 2 ** (i + 1) }
     0
 `),
 
@@ -121,7 +122,7 @@ loop(N - 1, i => `
 0b0001000000000001,
 
 // The loop
-loop(N - 1, i => `
+loop( N - 1, i => `
     DUP
     ${ 2 ** (N - 1 - i) }
     GREATERTHANOREQUAL
@@ -133,7 +134,7 @@ loop(N - 1, i => `
 `),
 
 // Read the result from the altstack
-loop(N - 1, _ => `FROMALTSTACK`),
+loop( N - 1, _ => `FROMALTSTACK` ),
 
 ]
 ```
