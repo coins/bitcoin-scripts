@@ -172,3 +172,66 @@ loop( T, i => `
 
 ]
 ```
+
+### Reusing the Lookup Table
+
+```js
+const N = 16;   // The bit length
+const T = 8;    // Number of leading bits to nullify 
+
+// The loop
+const nullify_T_bits = loop( T, i => `
+    DUP
+    ${ 2 ** (N - 1 - i) }
+    GREATERTHANOREQUAL
+    ${ i * 2 + 1 }
+    ADD
+    PICK
+    SUB
+`);
+
+// The loop which also drops the lookup table
+const nullify_T_bits_drop = loop( T, i => `
+    DUP
+    ${ 2 ** (N - 1 - i) }
+    GREATERTHANOREQUAL
+    1ADD
+    ROLL
+    SUB
+    NIP
+`);
+
+
+[
+
+// Push the lookup table onto the stack
+loop( T, i => `
+    ${ 2 ** (N - T + i) }
+    0
+`),
+
+// First input
+0b1010110011111110,
+nullify_T_bits,
+'TOALTSTACK',
+
+// Second input
+0b1010110011111100,
+nullify_T_bits,
+'TOALTSTACK',
+
+// Third input
+0b1010110011111000,
+nullify_T_bits,
+'TOALTSTACK',
+
+// Fourth input
+0b1010110011110000,
+nullify_T_bits_drop,
+
+'FROMALTSTACK',
+'FROMALTSTACK',
+'FROMALTSTACK',
+
+]
+```
