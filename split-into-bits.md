@@ -235,3 +235,76 @@ nullify_T_bits_drop,
 
 ]
 ```
+
+
+### Nullifying Trailing Bits
+
+```js
+const N = 8;        // The bit length
+const T = N - 6;    // Number of trailing bits to nullify 
+
+// The loop
+const nullify_T_bits = [
+    'DUP',
+    loop( T, i => `
+        DUP
+        ${ 2 ** (N - 1 - i) }
+        GREATERTHANOREQUAL
+        ${ i * 2 + 2 }
+        ADD
+        PICK
+        SUB
+    `),
+    'SUB'
+];
+
+// The loop which also drops the lookup table
+const nullify_T_bits_drop = [
+    'DUP',
+    loop( T, i => `
+        DUP
+        ${ 2 ** (N - 1 - i) }
+        GREATERTHANOREQUAL
+        2
+        ADD
+        ROLL
+        SUB
+        NIP
+    `),
+    'SUB'
+];
+
+
+[
+
+// Push the lookup table onto the stack
+loop( T, i => `
+    ${ 2 ** (N - T + i) }
+    0
+`),
+
+// First input
+0b11111110,
+nullify_T_bits,
+'TOALTSTACK',
+
+// Second input
+0b11111100,
+nullify_T_bits,
+'TOALTSTACK',
+
+// Third input
+0b11111000,
+nullify_T_bits,
+'TOALTSTACK',
+
+// last input
+0b11110000,
+nullify_T_bits_drop,
+
+'FROMALTSTACK',
+'FROMALTSTACK',
+'FROMALTSTACK',
+
+]
+```
