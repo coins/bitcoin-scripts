@@ -200,3 +200,27 @@ btcdeb "[
 # ]" 
 
 ```
+
+
+## 4-bit OP_MUL using a Lookup Table
+```
+[
+    loop(256, i => [
+        (i >>> 4) * (i % 16)
+    ]).reverse(),
+    
+    loop(16, i => [
+        (i << 4) + 16
+    ]).reverse(),
+
+    // The factor a
+    0x3, 
+    // The factor b
+    0x7,
+    OP_1ADD,
+    OP_PICK,
+    OP_ADD,
+    OP_PICK
+    // Now there's a*b on the stack
+]
+```
