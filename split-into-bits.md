@@ -308,3 +308,29 @@ nullify_T_bits_drop,
 
 ]
 ```
+
+
+
+## Split into Bits
+
+
+```js
+const N = 4;
+
+[
+    // The input value,
+    0b1010,
+
+    // Split into bits,
+    loop(N - 1, i => [
+        OP_DUP,
+        2**(N - 1 - i),
+        OP_GREATERTHANOREQUAL,
+        OP_TUCK,
+        OP_IF,
+            2**(N - 1 - i),
+            OP_SUB,    
+        OP_ENDIF,
+    ])
+]
+```
