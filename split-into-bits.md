@@ -334,3 +334,46 @@ const N = 4;
     ])
 ]
 ```
+
+
+## Split Nibbles into Bits
+
+```js
+const N = 4;
+
+[
+    // Lookup tables
+    loop(2**N, i => [
+        (i & 0b0100) ? 1 : 0,
+    ]).reverse(),
+
+    loop(2**N, i => [
+        (i & 0b0010) ? 1 : 0,
+    ]).reverse(),
+
+    loop(2**N, i => [
+        (i & 0b0001) ? 1 : 0,
+    ]).reverse(),
+
+
+    // Input
+    0b1101,
+
+    // Split into bits
+    OP_DUP,
+    OP_2DUP,
+
+    3, OP_ADD, OP_PICK,
+
+    OP_SWAP,
+    3 + 16, OP_ADD, OP_PICK,
+
+    OP_2SWAP,
+    3 + 16 * 2, OP_ADD, OP_PICK,
+
+    OP_SWAP,
+    8, OP_GREATERTHANOREQUAL,
+
+]
+
+```
