@@ -338,6 +338,8 @@ const N = 4;
 
 ## Split Nibbles into Bits
 
+
+### Solution 1
 ```js
 const N = 4;
 
@@ -376,4 +378,59 @@ const N = 4;
 
 ]
 
+```
+
+### Solution 2
+
+```js
+const N = 4;
+const num_inputs = 220;
+
+[
+    // Inputs
+    loop(num_inputs, _ => [
+        // Math.floor(Math.random() * 2**N),
+        0b1100,
+    ]),
+
+    // Lookup tables
+    loop(2**N, i => [
+        (i & 0b1000) ? 1 : 0,
+        (i & 0b0100) ? 1 : 0,
+        (i & 0b0010) ? 1 : 0,
+        (i & 0b0001) ? 1 : 0,
+    ]).reverse(),
+
+
+    loop(num_inputs, _ => [
+        // Read input
+        4*16,
+        OP_ROLL,
+
+        // Times four
+        OP_DUP,
+        OP_ADD,
+        OP_DUP,
+        OP_ADD,
+
+        OP_DUP,
+        OP_2DUP,
+
+        OP_PICK,
+        OP_TOALTSTACK,
+        OP_PICK,
+        OP_TOALTSTACK,
+        OP_PICK,
+        OP_TOALTSTACK, 
+        OP_PICK,
+        OP_TOALTSTACK,
+    ]),
+
+    loop(4*16, _ => OP_DROP),
+
+    loop(4 * num_inputs, _ => [
+        OP_FROMALTSTACK,
+    ])
+
+]
 ```
