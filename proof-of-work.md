@@ -15,7 +15,7 @@ The same mechanism can be used to verify a proof of work in script.
 
 ## Hash Preimage Challenges
 An interactive PoW puzzle is possible with hash pre-images. 
-A challenger gives a puzzle commitment to a prover. The prover has to bruteforce which hash sequence led to the commitment. We use the mechanism from "7-bit Integer commitments" an reverse it. The challenger commits to A preimage and hash commitment. The prover needs to bruteforce all possible hashs to find the path from preimage to commitment. The prove of knowledge of the puzzle solution is the integer.
+A challenger gives a puzzle commitment to a prover. The prover has to bruteforce which hash sequence led to the commitment. We use the mechanism from "7-bit Integer commitments" an reverse it. The challenger commits to A preimage and hash commitment. The prover needs to bruteforce all possible hashs to find the path from preimage to commitment. The proof of knowledge of the puzzle solution is the integer.
 [Here is an example transaction.](https://blockstream.info/nojs/tx/a3803be4f3da166096b4408ffe36a07750f31bb2b58bd660f8f1a0c59a99dda6)
 
 
